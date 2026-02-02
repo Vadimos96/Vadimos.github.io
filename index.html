@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Свадебное приглашение</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
@@ -14,13 +13,12 @@
       padding: 0;
       background: #f3e7dc;
       overflow-x: hidden;
-      scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Montserrat', sans-serif;
-      color: #2b2b2b;
       text-align: center;
+      color: #2b2b2b;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -28,15 +26,15 @@
       padding: 60px 20px;
     }
 
+    .content {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
     h2, h3 {
       font-family: 'Playfair Display', serif;
       letter-spacing: 1px;
       margin-bottom: 20px;
-    }
-
-    .content {
-      max-width: 420px;
-      margin: 0 auto;
     }
 
     /* ===== HERO ===== */
@@ -54,7 +52,7 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.5) 0%,
+        rgba(0,0,0,0.55) 0%,
         rgba(0,0,0,0.25) 40%,
         rgba(0,0,0,0) 70%
       );
@@ -65,22 +63,21 @@
       top: 370px;
       left: 46%;
       transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
       font-size: 44px;
       color: #fff;
-      font-family: 'Playfair Display', serif;
-      z-index: 2;
       line-height: 1.2;
+      z-index: 2;
     }
 
     /* ===== МЫ ===== */
     .about-us {
       height: 650px;
-      background: url("./images/FonWe.png") center/cover no-repeat;
+      background: url("./images/FonWe.jpg") center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
-      position: relative;
     }
 
     /* ===== TIMING ===== */
@@ -98,7 +95,7 @@
       position: relative;
       height: 700px;
       background: url("./images/FonLocation.png") center/cover no-repeat;
-      color: #ffffff;
+      color: #fff;
     }
 
     .location::before {
@@ -118,14 +115,10 @@
       position: relative;
       top: 370px;
       z-index: 2;
-      color: #ffffff;
+      color: #fff;
     }
 
     /* ===== DETAILS ===== */
-    .details h3 {
-      margin-top: 40px;
-    }
-
     .divider {
       width: 60px;
       height: 1px;
@@ -134,20 +127,19 @@
       opacity: 0.7;
     }
 
-    /* Цвета — анимация через CSS только */
     .colors {
       display: flex;
       justify-content: center;
       gap: 22px;
-      margin-top: 20px;
+      margin-top: 25px;
     }
 
     .colors span {
-      width: 48px;
-      height: 48px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       opacity: 0;
-      transform: scale(0.8);
+      transform: scale(0.85);
       animation: popIn 0.6s ease forwards;
     }
 
@@ -155,6 +147,7 @@
     .colors span:nth-child(2) { animation-delay: 0.2s; }
     .colors span:nth-child(3) { animation-delay: 0.3s; }
     .colors span:nth-child(4) { animation-delay: 0.4s; }
+    .colors span:nth-child(5) { animation-delay: 0.5s; }
 
     @keyframes popIn {
       to {
@@ -163,25 +156,21 @@
       }
     }
 
-    .sage   { background: #cce4c4; }
-    .mint   { background: #b4dcb4; }
-    .olive  { background: #97bb9e; }
-    .forest { background: #7ca48c; }
+    /* новые цвета */
+    .c1 { background: #cbd6d2; }
+    .c2 { background: #e0afb3; }
+    .c3 { background: #e0afb3; }
+    .c4 { background: #d6e4e7; }
+    .c5 { background: #d6cdbf; }
 
     .contacts {
       line-height: 1.8;
-      margin-top: 10px;
     }
 
     footer {
+      padding: 30px 0;
       font-size: 12px;
       opacity: 0.7;
-      padding: 30px 0;
-    }
-
-    /* ===== PERFORMANCE ===== */
-    * {
-      will-change: auto;
     }
 
   </style>
@@ -201,7 +190,8 @@
       <p>
         Есть события которые остаются в памяти на всю жизнь.<br>
         Есть люди, с которыми хочется их разделить.<br>
-        С большой радостью приглашаем вас разделить с нами главное событие этой весны — день нашей свадьбы.
+        С большой радостью приглашаем вас разделить с нами главное событие этой весны —
+        день нашей свадьбы.
       </p>
       <h3>18.04.26</h3>
     </div>
@@ -238,14 +228,16 @@
 
       <h3>ДРЕСС-КОД</h3>
       <p>
-        Для нас самое главное — ваше присутствие.<br>
+        Для нас самое главное – ваше присутствие.<br>
         Но будем очень благодарны, если поддержите цветовую гамму свадьбы.
       </p>
+
       <div class="colors">
-        <span class="sage"></span>
-        <span class="mint"></span>
-        <span class="olive"></span>
-        <span class="forest"></span>
+        <span class="c1"></span>
+        <span class="c2"></span>
+        <span class="c3"></span>
+        <span class="c4"></span>
+        <span class="c5"></span>
       </div>
 
       <div class="divider"></div>
@@ -261,8 +253,8 @@
       <h3>КОНТАКТЫ</h3>
       <p class="contacts">
         По всем вопросам обращайтесь:<br>
-        +7 987 101-38-65 — Вадим<br>
-        +7 964 955-52-60 — Алсу ♥️
+        +7&nbsp;987&nbsp;101-38-65 — Вадим<br>
+        +7&nbsp;964&nbsp;955-52-60 — Алсу ♥️
       </p>
     </div>
   </section>
