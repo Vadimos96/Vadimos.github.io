@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Свадебное приглашение</title>
 
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
@@ -70,14 +71,39 @@
       z-index: 2;
     }
 
+    /* ===== INVITE ===== */
+    .invite p {
+      line-height: 1.6;
+    }
+
     /* ===== МЫ ===== */
     .about-us {
-      height: 650px;
-      background: url("./images/FonWe.png") center/cover no-repeat;
+      padding: 70px 0 80px;
+      background: #f3e7dc;
+    }
+
+    /* Горизонтальная галерея */
+    .gallery-horizontal {
+      margin-top: 35px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 0 20px 10px;
+    }
+
+    .gallery-horizontal::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-horizontal img {
+      flex: 0 0 75%;
+      max-width: 75%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 18px;
+      scroll-snap-align: center;
     }
 
     /* ===== TIMING ===== */
@@ -95,7 +121,7 @@
       position: relative;
       height: 700px;
       background: url("./images/FonLocation.png") center/cover no-repeat;
-      color: #fff;
+      color: #ffffff;
     }
 
     .location::before {
@@ -115,7 +141,6 @@
       position: relative;
       top: 370px;
       z-index: 2;
-      color: #fff;
     }
 
     /* ===== DETAILS ===== */
@@ -130,7 +155,7 @@
     .colors {
       display: flex;
       justify-content: center;
-      gap: 22px;
+      gap: 20px;
       margin-top: 25px;
     }
 
@@ -138,29 +163,12 @@
       width: 54px;
       height: 54px;
       border-radius: 50%;
-      opacity: 0;
-      transform: scale(0.85);
-      animation: popIn 0.6s ease forwards;
-      border: 1px solid rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(0,0,0,0.15);
     }
 
-    .colors span:nth-child(1) { animation-delay: 0.1s; }
-    .colors span:nth-child(2) { animation-delay: 0.2s; }
-    .colors span:nth-child(3) { animation-delay: 0.3s; }
-    .colors span:nth-child(4) { animation-delay: 0.4s; }
-    .colors span:nth-child(5) { animation-delay: 0.5s; }
-
-    @keyframes popIn {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    /* новые цвета */
     .c1 { background: #cbd6d2; }
     .c2 { background: #e0afb3; }
-    .c3 { background: #fadedb; }
+    .c3 { background: #e0afb3; }
     .c4 { background: #d6e4e7; }
     .c5 { background: #d6cdbf; }
 
@@ -173,7 +181,6 @@
       font-size: 12px;
       opacity: 0.7;
     }
-
   </style>
 </head>
 
@@ -185,7 +192,7 @@
   </section>
 
   <!-- INVITE -->
-  <section>
+  <section class="invite">
     <div class="content">
       <p><strong>ДОРОГИЕ ДРУЗЬЯ И РОДНЫЕ!</strong></p>
       <p>
@@ -200,7 +207,24 @@
 
   <!-- МЫ -->
   <section class="about-us">
-    <h2>МЫ</h2>
+    <div class="content">
+      <h2>МЫ</h2>
+    </div>
+
+    <div class="gallery-horizontal">
+      <img src="./images/We1.jpg" alt="">
+      <img src="./images/We2.jpg" alt="">
+      <img src="./images/We3.jpg" alt="">
+      <img src="./images/We4.jpg" alt="">
+      <img src="./images/We5.jpg" alt="">
+      <img src="./images/We6.jpg" alt="">
+      <img src="./images/We7.jpg" alt="">
+      <img src="./images/We8.jpg" alt="">
+      <img src="./images/We9.jpg" alt="">
+      <img src="./images/We10.jpg" alt="">
+      <img src="./images/We11.jpg" alt="">
+      <img src="./images/We12.jpg" alt="">
+    </div>
   </section>
 
   <!-- TIMING -->
@@ -254,8 +278,8 @@
       <h3>КОНТАКТЫ</h3>
       <p class="contacts">
         По всем вопросам обращайтесь:<br>
-        +7&nbsp;987&nbsp;101-38-65 — Вадим<br>
-        +7&nbsp;964&nbsp;955-52-60 — Алсу ♥️
+        +7 987 101-38-65 — Вадим<br>
+        +7 964 955-52-60 — Алсу ♥️
       </p>
     </div>
   </section>
