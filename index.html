@@ -44,10 +44,9 @@
       width: 100vw;
       height: 80vh;
       min-height: 560px;
-      background: url("./images/FonHero.png") center/cover no-repeat;
-      background-size: cover;
-  background-position: center 25%;
-}
+      background: url("./images/FonHero.png") center 25% / cover no-repeat;
+    }
+
     .hero::after {
       content: "";
       position: absolute;
@@ -77,16 +76,14 @@
       line-height: 1.6;
     }
 
-    /* ===== МЫ ===== */
-.about-us {
-  position: relative;
-  min-height: 80vh; /* было меньше — теперь блок выше экрана */
-  padding: 100px 0 120px;
-  background: url("./images/FonWe.png") center/cover no-repeat;
-}
+    /* ===== МЫ / ГАЛЕРЕЯ ===== */
+    .about-us {
+      position: relative;
+      min-height: 80vh;
+      padding: 100px 0 120px;
+      background: url("./images/FonWe.png") center/cover no-repeat;
+    }
 
-
-    /* Горизонтальная галерея */
     .gallery-horizontal {
       margin-top: 35px;
       display: flex;
@@ -108,6 +105,16 @@
       object-fit: cover;
       border-radius: 18px;
       scroll-snap-align: center;
+    }
+
+    .about-text {
+      margin: 35px auto 0;
+      max-width: 500px;
+      padding: 0 20px;
+      color: #ffffff;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      line-height: 1.6;
     }
 
     /* ===== TIMING ===== */
@@ -209,25 +216,26 @@
     </div>
   </section>
 
-  <!-- МЫ -->
+  <!-- ГАЛЕРЕЯ -->
   <section class="about-us">
-    <div class="content">
-      <h2>МЫ</h2>
+    <div class="gallery-horizontal">
+      <img src="./images/We1.jpg">
+      <img src="./images/We2.jpg">
+      <img src="./images/We3.jpg">
+      <img src="./images/We4.jpg">
+      <img src="./images/We5.jpg">
+      <img src="./images/We6.jpg">
+      <img src="./images/We7.jpg">
+      <img src="./images/We8.jpg">
+      <img src="./images/We9.jpg">
+      <img src="./images/We10.jpg">
+      <img src="./images/We11.jpg">
+      <img src="./images/We12.jpg">
     </div>
 
-    <div class="gallery-horizontal">
-      <img src="./images/We1.jpg" alt="">
-      <img src="./images/We2.jpg" alt="">
-      <img src="./images/We3.jpg" alt="">
-      <img src="./images/We4.jpg" alt="">
-      <img src="./images/We5.jpg" alt="">
-      <img src="./images/We6.jpg" alt="">
-      <img src="./images/We7.jpg" alt="">
-      <img src="./images/We8.jpg" alt="">
-      <img src="./images/We9.jpg" alt="">
-      <img src="./images/We10.jpg" alt="">
-      <img src="./images/We11.jpg" alt="">
-      <img src="./images/We12.jpg" alt="">
+    <div class="about-text">
+      Не ищите любви, ищите того, кто принесёт вам счастье.
+      Рано или поздно это счастье превратится в любовь.
     </div>
   </section>
 
