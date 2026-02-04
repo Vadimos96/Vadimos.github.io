@@ -75,13 +75,14 @@
     /* ===== ABOUT / GALLERY ===== */
     .about-us {
       min-height: 75vh;
-      padding: 90px 0 110px;
+      padding: 160px 0 130px; /* 🔥 ВАЖНО: блок стал «ниже» */
       background: url("./images/FonWe.png") center/cover no-repeat;
     }
 
     .gallery-wrapper {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      margin-top: 40px; /* 🔥 опускаем галерею */
     }
 
     .gallery-wrapper::-webkit-scrollbar {
@@ -96,7 +97,7 @@
     }
 
     .gallery-track img {
-      flex: 0 0 60vw;   /* 🔥 ВАЖНО: нормальный размер */
+      flex: 0 0 60vw;
       max-width: 60vw;
       aspect-ratio: 3 / 4;
       object-fit: cover;
@@ -109,7 +110,7 @@
     }
 
     .about-text {
-      margin: 35px auto 0;
+      margin: 45px auto 0; /* 🔥 текст ниже галереи */
       max-width: 520px;
       padding: 0 20px;
       color: #ffffff;
@@ -213,7 +214,6 @@
 <section class="about-us">
   <div class="gallery-wrapper">
     <div class="gallery-track">
-      <!-- фото x2 -->
       <img src="./images/We1.jpg"><img src="./images/We2.jpg"><img src="./images/We3.jpg">
       <img src="./images/We4.jpg"><img src="./images/We5.jpg"><img src="./images/We6.jpg">
       <img src="./images/We7.jpg"><img src="./images/We8.jpg"><img src="./images/We9.jpg">
