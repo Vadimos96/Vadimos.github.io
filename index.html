@@ -19,7 +19,6 @@
       font-family: 'Montserrat', sans-serif;
       text-align: center;
       color: #2b2b2b;
-      -webkit-font-smoothing: antialiased;
     }
 
     section {
@@ -40,7 +39,6 @@
     /* ===== HERO ===== */
     .hero {
       position: relative;
-      width: 100vw;
       height: 80vh;
       min-height: 560px;
       background: url("./images/FonHero.png") center 25% / cover no-repeat;
@@ -66,7 +64,6 @@
       font-family: 'Playfair Display', serif;
       font-size: 44px;
       color: #fff;
-      line-height: 1.2;
       z-index: 2;
     }
 
@@ -77,14 +74,12 @@
 
     /* ===== ABOUT / GALLERY ===== */
     .about-us {
-      position: relative;
-      min-height: 80vh;
-      padding: 100px 0 120px;
+      min-height: 75vh;
+      padding: 90px 0 110px;
       background: url("./images/FonWe.png") center/cover no-repeat;
     }
 
     .gallery-wrapper {
-      margin-top: 35px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
@@ -97,25 +92,20 @@
       display: flex;
       gap: 14px;
       width: max-content;
-      animation: scrollGallery 90s linear infinite;
-      pointer-events: auto;
+      animation: scrollGallery 100s linear infinite;
     }
 
     .gallery-track img {
-      flex: 0 0 75vw;
-      max-width: 75%;
+      flex: 0 0 60vw;   /* 🔥 ВАЖНО: нормальный размер */
+      max-width: 60vw;
       aspect-ratio: 3 / 4;
       object-fit: cover;
       border-radius: 18px;
     }
 
     @keyframes scrollGallery {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
 
     .about-text {
@@ -134,16 +124,15 @@
       justify-content: space-between;
       border-bottom: 1px solid #d8cfc6;
       padding: 12px 0;
-      margin: 10px 0;
       font-size: 15px;
     }
 
     /* ===== LOCATION ===== */
     .location {
-      position: relative;
       height: 700px;
       background: url("./images/FonLocation.png") center/cover no-repeat;
-      color: #ffffff;
+      color: #fff;
+      position: relative;
     }
 
     .location::before {
@@ -177,7 +166,7 @@
     .colors {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 18px;
       margin-top: 25px;
     }
 
@@ -194,10 +183,6 @@
     .c4 { background: #d6e4e7; }
     .c5 { background: #d6cdbf; }
 
-    .contacts {
-      line-height: 1.8;
-    }
-
     footer {
       padding: 30px 0;
       font-size: 12px;
@@ -208,124 +193,44 @@
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="names">ВАДИМ<br>&amp;<br>АЛСУ</div>
-  </section>
+<section class="hero">
+  <div class="names">ВАДИМ<br>&amp;<br>АЛСУ</div>
+</section>
 
-  <!-- INVITE -->
-  <section class="invite">
-    <div class="content">
-      <p><strong>ДОРОГИЕ ДРУЗЬЯ И РОДНЫЕ!</strong></p>
-      <p>
-        Есть события которые остаются в памяти на всю жизнь.<br>
-        Есть люди, с которыми хочется их разделить.<br>
-        С большой радостью приглашаем вас разделить с нами главное событие этой весны —
-        день нашей свадьбы.
-      </p>
-      <h3>18.04.26</h3>
+<section class="invite">
+  <div class="content">
+    <p><strong>ДОРОГИЕ ДРУЗЬЯ И РОДНЫЕ!</strong></p>
+    <p>
+      Есть события которые остаются в памяти на всю жизнь.<br>
+      Есть люди, с которыми хочется их разделить.<br>
+      С большой радостью приглашаем вас разделить с нами
+      главное событие этой весны — день нашей свадьбы.
+    </p>
+    <h3>18.04.26</h3>
+  </div>
+</section>
+
+<section class="about-us">
+  <div class="gallery-wrapper">
+    <div class="gallery-track">
+      <!-- фото x2 -->
+      <img src="./images/We1.jpg"><img src="./images/We2.jpg"><img src="./images/We3.jpg">
+      <img src="./images/We4.jpg"><img src="./images/We5.jpg"><img src="./images/We6.jpg">
+      <img src="./images/We7.jpg"><img src="./images/We8.jpg"><img src="./images/We9.jpg">
+      <img src="./images/We10.jpg"><img src="./images/We11.jpg"><img src="./images/We12.jpg">
+
+      <img src="./images/We1.jpg"><img src="./images/We2.jpg"><img src="./images/We3.jpg">
+      <img src="./images/We4.jpg"><img src="./images/We5.jpg"><img src="./images/We6.jpg">
+      <img src="./images/We7.jpg"><img src="./images/We8.jpg"><img src="./images/We9.jpg">
+      <img src="./images/We10.jpg"><img src="./images/We11.jpg"><img src="./images/We12.jpg">
     </div>
-  </section>
+  </div>
 
-  <!-- GALLERY -->
-  <section class="about-us">
-    <div class="gallery-wrapper">
-      <div class="gallery-track">
-        <!-- фото ×2 для зацикливания -->
-        <img src="./images/We1.jpg">
-        <img src="./images/We2.jpg">
-        <img src="./images/We3.jpg">
-        <img src="./images/We4.jpg">
-        <img src="./images/We5.jpg">
-        <img src="./images/We6.jpg">
-        <img src="./images/We7.jpg">
-        <img src="./images/We8.jpg">
-        <img src="./images/We9.jpg">
-        <img src="./images/We10.jpg">
-        <img src="./images/We11.jpg">
-        <img src="./images/We12.jpg">
-
-        <img src="./images/We1.jpg">
-        <img src="./images/We2.jpg">
-        <img src="./images/We3.jpg">
-        <img src="./images/We4.jpg">
-        <img src="./images/We5.jpg">
-        <img src="./images/We6.jpg">
-        <img src="./images/We7.jpg">
-        <img src="./images/We8.jpg">
-        <img src="./images/We9.jpg">
-        <img src="./images/We10.jpg">
-        <img src="./images/We11.jpg">
-        <img src="./images/We12.jpg">
-      </div>
-    </div>
-
-    <div class="about-text">
-      Не ищите любви, ищите того, кто принесёт вам счастье.
-      Рано или поздно это счастье превратится в любовь.
-    </div>
-  </section>
-
-  <!-- TIMING -->
-  <section>
-    <div class="content">
-      <h2>ТАЙМИНГ</h2>
-      <div class="time-row"><span>16:30</span><span>Сбор гостей / фуршет</span></div>
-      <div class="time-row"><span>17:00</span><span>Торжественная церемония</span></div>
-      <div class="time-row"><span>17:30</span><span>Праздничный ужин</span></div>
-      <div class="time-row"><span>23:00</span><span>Завершение банкета</span></div>
-    </div>
-  </section>
-
-  <!-- LOCATION -->
-  <section class="location">
-    <div class="content">
-      <h2>ЛОКАЦИЯ</h2>
-      <p><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
-    </div>
-  </section>
-
-  <!-- DETAILS -->
-  <section class="details">
-    <div class="content">
-      <h2>ДЕТАЛИ</h2>
-
-      <h3>ДРЕСС-КОД</h3>
-      <p>
-        Для нас самое главное – ваше присутствие.<br>
-        Но будем очень благодарны, если поддержите цветовую гамму свадьбы.
-      </p>
-
-      <div class="colors">
-        <span class="c1"></span>
-        <span class="c2"></span>
-        <span class="c3"></span>
-        <span class="c4"></span>
-        <span class="c5"></span>
-      </div>
-
-      <div class="divider"></div>
-
-      <h3>18+</h3>
-      <p>
-        Просим оставить ваших малышей в надёжных руках на день торжества,
-        так как формат нашей свадьбы не предполагает детской зоны и аниматоров.
-      </p>
-
-      <div class="divider"></div>
-
-      <h3>КОНТАКТЫ</h3>
-      <p class="contacts">
-        По всем вопросам обращайтесь:<br>
-        +7 987 101-38-65 — Вадим<br>
-        +7 964 955-52-60 — Алсу ♥️
-      </p>
-    </div>
-  </section>
-
-  <footer>
-    С любовью, Вадим & Алсу
-  </footer>
+  <div class="about-text">
+    Не ищите любви, ищите того, кто принесёт вам счастье.
+    Рано или поздно это счастье превратится в любовь.
+  </div>
+</section>
 
 </body>
 </html>
