@@ -72,19 +72,18 @@ h2, h3 {
   line-height: 1.6;
 }
 
-/* ===== ABOUT / GALLERY ===== */
+/* ===== МЫ / ГАЛЕРЕЯ ===== */
 .about-us {
   min-height: 85vh;
-  padding: 220px 0 160px; /* 🔥 опустили ВСЁ ниже */
+  padding: 260px 0 180px;
   background: url("./images/FonWe.png") center/cover no-repeat;
 }
 
-/* Контейнер скролла */
 .gallery-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin-top: 80px; /* 🔥 галерея ещё ниже */
   scroll-behavior: smooth;
+  margin-top: 100px;
 }
 
 .gallery-wrapper::-webkit-scrollbar {
@@ -94,21 +93,21 @@ h2, h3 {
 .gallery-track {
   display: flex;
   gap: 14px;
-  width: max-content;
   padding: 0 20px;
+  width: max-content;
 }
 
 .gallery-track img {
-  flex: 0 0 75%;
-  max-width: 75%;
-  aspect-ratio: 3 / 4;
+  flex: 0 0 240px;
+  width: 240px;
+  height: 320px;
   object-fit: cover;
   border-radius: 18px;
 }
 
-/* Текст под галереей */
+/* текст под галереей */
 .about-text {
-  margin: 70px auto 0; /* 🔥 текст ещё ниже */
+  margin: 90px auto 0;
   max-width: 520px;
   padding: 0 24px;
   color: #ffffff;
@@ -117,7 +116,7 @@ h2, h3 {
   line-height: 1.6;
 }
 
-/* ===== TIMING ===== */
+/* ===== ТАЙМИНГ ===== */
 .time-row {
   display: flex;
   justify-content: space-between;
@@ -126,12 +125,12 @@ h2, h3 {
   font-size: 15px;
 }
 
-/* ===== LOCATION ===== */
+/* ===== ЛОКАЦИЯ ===== */
 .location {
+  position: relative;
   height: 700px;
   background: url("./images/FonLocation.png") center/cover no-repeat;
-  color: #fff;
-  position: relative;
+  color: #ffffff;
 }
 
 .location::before {
@@ -153,7 +152,7 @@ h2, h3 {
   z-index: 2;
 }
 
-/* ===== DETAILS ===== */
+/* ===== ДЕТАЛИ ===== */
 .divider {
   width: 60px;
   height: 1px;
@@ -182,6 +181,10 @@ h2, h3 {
 .c4 { background: #d6e4e7; }
 .c5 { background: #d6cdbf; }
 
+.contacts {
+  line-height: 1.8;
+}
+
 footer {
   padding: 30px 0;
   font-size: 12px;
@@ -192,10 +195,12 @@ footer {
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <div class="names">ВАДИМ<br>&amp;<br>АЛСУ</div>
 </section>
 
+<!-- INVITE -->
 <section class="invite">
   <div class="content">
     <p><strong>ДОРОГИЕ ДРУЗЬЯ И РОДНЫЕ!</strong></p>
@@ -209,6 +214,7 @@ footer {
   </div>
 </section>
 
+<!-- МЫ -->
 <section class="about-us">
 
   <div class="gallery-wrapper" id="gallery">
@@ -235,14 +241,71 @@ footer {
 
 </section>
 
+<!-- ТАЙМИНГ -->
+<section>
+  <div class="content">
+    <h2>ТАЙМИНГ</h2>
+    <div class="time-row"><span>16:30</span><span>Сбор гостей / фуршет</span></div>
+    <div class="time-row"><span>17:00</span><span>Торжественная церемония</span></div>
+    <div class="time-row"><span>17:30</span><span>Праздничный ужин</span></div>
+    <div class="time-row"><span>23:00</span><span>Завершение банкета</span></div>
+  </div>
+</section>
+
+<!-- ЛОКАЦИЯ -->
+<section class="location">
+  <div class="content">
+    <h2>ЛОКАЦИЯ</h2>
+    <p><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
+  </div>
+</section>
+
+<!-- ДЕТАЛИ -->
+<section class="details">
+  <div class="content">
+    <h2>ДЕТАЛИ</h2>
+
+    <h3>ДРЕСС-КОД</h3>
+    <p>
+      Для нас самое главное – ваше присутствие.<br>
+      Но будем очень благодарны, если поддержите цветовую гамму свадьбы.
+    </p>
+
+    <div class="colors">
+      <span class="c1"></span>
+      <span class="c2"></span>
+      <span class="c3"></span>
+      <span class="c4"></span>
+      <span class="c5"></span>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>18+</h3>
+    <p>
+      Просим оставить ваших малышей в надёжных руках на день торжества,
+      так как формат нашей свадьбы не предполагает детской зоны и аниматоров.
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>КОНТАКТЫ</h3>
+    <p class="contacts">
+      По всем вопросам обращайтесь:<br>
+      +7 987 101-38-65 — Вадим<br>
+      +7 964 955-52-60 — Алсу ♥️
+    </p>
+  </div>
+</section>
+
 <footer>
   С любовью, Вадим & Алсу
 </footer>
 
 <script>
-/* ===== ПЛАВНАЯ АВТОПРОКРУТКА + СВАЙП В ОБЕ СТОРОНЫ ===== */
+/* автопрокрутка + свайп в обе стороны */
 const gallery = document.getElementById('gallery');
-let speed = 0.25; // 🔥 медленно и плавно
+let speed = 0.15;
 let isUserScrolling = false;
 
 gallery.addEventListener('touchstart', () => isUserScrolling = true);
@@ -259,7 +322,6 @@ function autoScroll() {
   }
   requestAnimationFrame(autoScroll);
 }
-
 autoScroll();
 </script>
 
