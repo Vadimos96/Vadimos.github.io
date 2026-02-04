@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Свадебное приглашение</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
@@ -76,40 +75,46 @@
       line-height: 1.6;
     }
 
-    /* ===== МЫ / ГАЛЕРЕЯ ===== */
+    /* ===== ABOUT / GALLERY ===== */
     .about-us {
       position: relative;
-      min-height: 60vh;
+      min-height: 80vh;
       padding: 100px 0 120px;
       background: url("./images/FonWe.png") center/cover no-repeat;
     }
 
-    .gallery-horizontal {
+    .gallery-wrapper {
+      overflow: hidden;
       margin-top: 35px;
+    }
+
+    .gallery-track {
       display: flex;
       gap: 14px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 0 20px 10px;
+      width: max-content;
+      animation: scrollGallery 60s linear infinite;
     }
 
-    .gallery-horizontal::-webkit-scrollbar {
-      display: none;
-    }
-
-    .gallery-horizontal img {
-      flex: 0 0 75%;
-      max-width: 75%;
+    .gallery-track img {
+      height: 320px;
       aspect-ratio: 3 / 4;
       object-fit: cover;
       border-radius: 18px;
-      scroll-snap-align: center;
+      flex-shrink: 0;
+    }
+
+    @keyframes scrollGallery {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
     }
 
     .about-text {
       margin: 35px auto 0;
-      max-width: 500px;
+      max-width: 520px;
       padding: 0 20px;
       color: #ffffff;
       font-family: 'Playfair Display', serif;
@@ -192,6 +197,13 @@
       font-size: 12px;
       opacity: 0.7;
     }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .gallery-track img {
+        height: 240px;
+      }
+    }
   </style>
 </head>
 
@@ -216,21 +228,37 @@
     </div>
   </section>
 
-  <!-- ГАЛЕРЕЯ -->
+  <!-- ABOUT / GALLERY -->
   <section class="about-us">
-    <div class="gallery-horizontal">
-      <img src="./images/We1.jpg">
-      <img src="./images/We2.jpg">
-      <img src="./images/We3.jpg">
-      <img src="./images/We4.jpg">
-      <img src="./images/We5.jpg">
-      <img src="./images/We6.jpg">
-      <img src="./images/We7.jpg">
-      <img src="./images/We8.jpg">
-      <img src="./images/We9.jpg">
-      <img src="./images/We10.jpg">
-      <img src="./images/We11.jpg">
-      <img src="./images/We12.jpg">
+    <div class="gallery-wrapper">
+      <div class="gallery-track">
+        <!-- ДУБЛИРУЕМ ФОТО ДВАЖДЫ ДЛЯ ЗАЦИКЛИВАНИЯ -->
+        <img src="./images/We1.jpg">
+        <img src="./images/We2.jpg">
+        <img src="./images/We3.jpg">
+        <img src="./images/We4.jpg">
+        <img src="./images/We5.jpg">
+        <img src="./images/We6.jpg">
+        <img src="./images/We7.jpg">
+        <img src="./images/We8.jpg">
+        <img src="./images/We9.jpg">
+        <img src="./images/We10.jpg">
+        <img src="./images/We11.jpg">
+        <img src="./images/We12.jpg">
+
+        <img src="./images/We1.jpg">
+        <img src="./images/We2.jpg">
+        <img src="./images/We3.jpg">
+        <img src="./images/We4.jpg">
+        <img src="./images/We5.jpg">
+        <img src="./images/We6.jpg">
+        <img src="./images/We7.jpg">
+        <img src="./images/We8.jpg">
+        <img src="./images/We9.jpg">
+        <img src="./images/We10.jpg">
+        <img src="./images/We11.jpg">
+        <img src="./images/We12.jpg">
+      </div>
     </div>
 
     <div class="about-text">
