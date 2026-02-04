@@ -84,23 +84,29 @@
     }
 
     .gallery-wrapper {
-      overflow: hidden;
       margin-top: 35px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .gallery-wrapper::-webkit-scrollbar {
+      display: none;
     }
 
     .gallery-track {
       display: flex;
       gap: 14px;
       width: max-content;
-      animation: scrollGallery 60s linear infinite;
+      animation: scrollGallery 90s linear infinite;
+      pointer-events: auto;
     }
 
     .gallery-track img {
-      height: 320px;
+      flex: 0 0 75vw;
+      max-width: 75%;
       aspect-ratio: 3 / 4;
       object-fit: cover;
       border-radius: 18px;
-      flex-shrink: 0;
     }
 
     @keyframes scrollGallery {
@@ -197,13 +203,6 @@
       font-size: 12px;
       opacity: 0.7;
     }
-
-    /* ===== MOBILE ===== */
-    @media (max-width: 768px) {
-      .gallery-track img {
-        height: 240px;
-      }
-    }
   </style>
 </head>
 
@@ -228,11 +227,11 @@
     </div>
   </section>
 
-  <!-- ABOUT / GALLERY -->
+  <!-- GALLERY -->
   <section class="about-us">
     <div class="gallery-wrapper">
       <div class="gallery-track">
-        <!-- ДУБЛИРУЕМ ФОТО ДВАЖДЫ ДЛЯ ЗАЦИКЛИВАНИЯ -->
+        <!-- фото ×2 для зацикливания -->
         <img src="./images/We1.jpg">
         <img src="./images/We2.jpg">
         <img src="./images/We3.jpg">
