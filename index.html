@@ -1,195 +1,193 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Свадебное приглашение</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Свадебное приглашение</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #f3e7dc;
-      overflow-x: hidden;
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #f3e7dc;
+  overflow-x: hidden;
+}
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
-      color: #2b2b2b;
-    }
+body {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: #2b2b2b;
+}
 
-    section {
-      padding: 60px 20px;
-    }
+section {
+  padding: 60px 20px;
+}
 
-    .content {
-      max-width: 420px;
-      margin: 0 auto;
-    }
+.content {
+  max-width: 420px;
+  margin: 0 auto;
+}
 
-    h2, h3 {
-      font-family: 'Playfair Display', serif;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-    }
+h2, h3 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
 
-    /* ===== HERO ===== */
-    .hero {
-      position: relative;
-      height: 80vh;
-      min-height: 560px;
-      background: url("./images/FonHero.png") center 25% / cover no-repeat;
-    }
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 80vh;
+  min-height: 560px;
+  background: url("./images/FonHero.png") center 25% / cover no-repeat;
+}
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.25) 40%,
-        rgba(0,0,0,0) 70%
-      );
-    }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.25) 40%,
+    rgba(0,0,0,0) 70%
+  );
+}
 
-    .names {
-      position: absolute;
-      top: 390px;
-      left: 46%;
-      transform: translateX(-50%);
-      font-family: 'Playfair Display', serif;
-      font-size: 44px;
-      color: #fff;
-      z-index: 2;
-    }
+.names {
+  position: absolute;
+  top: 390px;
+  left: 46%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  color: #fff;
+  z-index: 2;
+}
 
-    /* ===== INVITE ===== */
-    .invite p {
-      line-height: 1.6;
-    }
+/* ===== INVITE ===== */
+.invite p {
+  line-height: 1.6;
+}
 
-    /* ===== ABOUT / GALLERY ===== */
-    .about-us {
-      min-height: 75vh;
-      padding: 160px 0 130px; /* 🔥 ВАЖНО: блок стал «ниже» */
-      background: url("./images/FonWe.png") center/cover no-repeat;
-    }
+/* ===== ABOUT / GALLERY ===== */
+.about-us {
+  min-height: 85vh;
+  padding: 220px 0 160px; /* 🔥 опустили ВСЁ ниже */
+  background: url("./images/FonWe.png") center/cover no-repeat;
+}
 
-    .gallery-wrapper {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      margin-top: 40px; /* 🔥 опускаем галерею */
-    }
+/* Контейнер скролла */
+.gallery-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 80px; /* 🔥 галерея ещё ниже */
+  scroll-behavior: smooth;
+}
 
-    .gallery-wrapper::-webkit-scrollbar {
-      display: none;
-    }
+.gallery-wrapper::-webkit-scrollbar {
+  display: none;
+}
 
-    .gallery-track {
-      display: flex;
-      gap: 14px;
-      width: max-content;
-      animation: scrollGallery 100s linear infinite;
-    }
+.gallery-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  padding: 0 20px;
+}
 
-    .gallery-track img {
-      flex: 0 0 60vw;
-      max-width: 60vw;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      border-radius: 18px;
-    }
+.gallery-track img {
+  flex: 0 0 75%;
+  max-width: 75%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 18px;
+}
 
-    @keyframes scrollGallery {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+/* Текст под галереей */
+.about-text {
+  margin: 70px auto 0; /* 🔥 текст ещё ниже */
+  max-width: 520px;
+  padding: 0 24px;
+  color: #ffffff;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
 
-    .about-text {
-      margin: 45px auto 0; /* 🔥 текст ниже галереи */
-      max-width: 520px;
-      padding: 0 20px;
-      color: #ffffff;
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      line-height: 1.6;
-    }
+/* ===== TIMING ===== */
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d8cfc6;
+  padding: 12px 0;
+  font-size: 15px;
+}
 
-    /* ===== TIMING ===== */
-    .time-row {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #d8cfc6;
-      padding: 12px 0;
-      font-size: 15px;
-    }
+/* ===== LOCATION ===== */
+.location {
+  height: 700px;
+  background: url("./images/FonLocation.png") center/cover no-repeat;
+  color: #fff;
+  position: relative;
+}
 
-    /* ===== LOCATION ===== */
-    .location {
-      height: 700px;
-      background: url("./images/FonLocation.png") center/cover no-repeat;
-      color: #fff;
-      position: relative;
-    }
+.location::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.35) 45%,
+    rgba(0,0,0,0.35) 55%,
+    rgba(0,0,0,0) 100%
+  );
+}
 
-    .location::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.35) 45%,
-        rgba(0,0,0,0.35) 55%,
-        rgba(0,0,0,0) 100%
-      );
-    }
+.location .content {
+  position: relative;
+  top: 370px;
+  z-index: 2;
+}
 
-    .location .content {
-      position: relative;
-      top: 370px;
-      z-index: 2;
-    }
+/* ===== DETAILS ===== */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: #bfae9e;
+  margin: 35px auto;
+  opacity: 0.7;
+}
 
-    /* ===== DETAILS ===== */
-    .divider {
-      width: 60px;
-      height: 1px;
-      background: #bfae9e;
-      margin: 35px auto;
-      opacity: 0.7;
-    }
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 25px;
+}
 
-    .colors {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      margin-top: 25px;
-    }
+.colors span {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.15);
+}
 
-    .colors span {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.15);
-    }
+.c1 { background: #cbd6d2; }
+.c2 { background: #e0afb3; }
+.c3 { background: #e0afb3; }
+.c4 { background: #d6e4e7; }
+.c5 { background: #d6cdbf; }
 
-    .c1 { background: #cbd6d2; }
-    .c2 { background: #e0afb3; }
-    .c3 { background: #e0afb3; }
-    .c4 { background: #d6e4e7; }
-    .c5 { background: #d6cdbf; }
-
-    footer {
-      padding: 30px 0;
-      font-size: 12px;
-      opacity: 0.7;
-    }
-  </style>
+footer {
+  padding: 30px 0;
+  font-size: 12px;
+  opacity: 0.7;
+}
+</style>
 </head>
 
 <body>
@@ -212,17 +210,21 @@
 </section>
 
 <section class="about-us">
-  <div class="gallery-wrapper">
-    <div class="gallery-track">
-      <img src="./images/We1.jpg"><img src="./images/We2.jpg"><img src="./images/We3.jpg">
-      <img src="./images/We4.jpg"><img src="./images/We5.jpg"><img src="./images/We6.jpg">
-      <img src="./images/We7.jpg"><img src="./images/We8.jpg"><img src="./images/We9.jpg">
-      <img src="./images/We10.jpg"><img src="./images/We11.jpg"><img src="./images/We12.jpg">
 
-      <img src="./images/We1.jpg"><img src="./images/We2.jpg"><img src="./images/We3.jpg">
-      <img src="./images/We4.jpg"><img src="./images/We5.jpg"><img src="./images/We6.jpg">
-      <img src="./images/We7.jpg"><img src="./images/We8.jpg"><img src="./images/We9.jpg">
-      <img src="./images/We10.jpg"><img src="./images/We11.jpg"><img src="./images/We12.jpg">
+  <div class="gallery-wrapper" id="gallery">
+    <div class="gallery-track">
+      <img src="./images/We1.jpg">
+      <img src="./images/We2.jpg">
+      <img src="./images/We3.jpg">
+      <img src="./images/We4.jpg">
+      <img src="./images/We5.jpg">
+      <img src="./images/We6.jpg">
+      <img src="./images/We7.jpg">
+      <img src="./images/We8.jpg">
+      <img src="./images/We9.jpg">
+      <img src="./images/We10.jpg">
+      <img src="./images/We11.jpg">
+      <img src="./images/We12.jpg">
     </div>
   </div>
 
@@ -230,7 +232,36 @@
     Не ищите любви, ищите того, кто принесёт вам счастье.
     Рано или поздно это счастье превратится в любовь.
   </div>
+
 </section>
+
+<footer>
+  С любовью, Вадим & Алсу
+</footer>
+
+<script>
+/* ===== ПЛАВНАЯ АВТОПРОКРУТКА + СВАЙП В ОБЕ СТОРОНЫ ===== */
+const gallery = document.getElementById('gallery');
+let speed = 0.25; // 🔥 медленно и плавно
+let isUserScrolling = false;
+
+gallery.addEventListener('touchstart', () => isUserScrolling = true);
+gallery.addEventListener('touchend', () => isUserScrolling = false);
+gallery.addEventListener('mousedown', () => isUserScrolling = true);
+gallery.addEventListener('mouseup', () => isUserScrolling = false);
+
+function autoScroll() {
+  if (!isUserScrolling) {
+    gallery.scrollLeft += speed;
+    if (gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth) {
+      gallery.scrollLeft = 0;
+    }
+  }
+  requestAnimationFrame(autoScroll);
+}
+
+autoScroll();
+</script>
 
 </body>
 </html>
