@@ -77,20 +77,18 @@
     /* ===== МЫ ===== */
     .about-us {
       position: relative;
-      height: 55vh;
-      min-height: 420px;
+      height: 90vh;
+      min-height: 520px;
       background: url("./images/FonWe.png") center / cover no-repeat;
       padding: 0;
       overflow: hidden;
     }
 
-    /* Галерея — опущена НИЖЕ */
     .we-gallery-wrapper {
       position: absolute;
-      top: 190px; /* БЫЛО 140px → стало ниже */
+      top: 220px;
       left: 0;
       width: 100vw;
-      overflow: hidden;
     }
 
     .we-gallery {
@@ -117,16 +115,14 @@
       user-select: none;
     }
 
-    /* Текст — поднят ближе к галерее */
     .we-text {
       position: absolute;
-      bottom: 18px; /* БЫЛО 40px → ближе к галерее */
+      bottom: 24px;
       width: 100%;
       padding: 0 24px;
       color: #ffffff;
       font-size: 15px;
       line-height: 1.5;
-      text-align: center;
       opacity: 0.95;
     }
 
@@ -251,17 +247,74 @@
   </p>
 </section>
 
-<!-- остальной код без изменений -->
+<section>
+  <div class="content">
+    <h2>ТАЙМИНГ</h2>
+    <div class="time-row"><span>16:30</span><span>Сбор гостей / фуршет</span></div>
+    <div class="time-row"><span>17:00</span><span>Торжественная церемония</span></div>
+    <div class="time-row"><span>17:30</span><span>Праздничный ужин</span></div>
+    <div class="time-row"><span>23:00</span><span>Завершение банкета</span></div>
+  </div>
+</section>
+
+<section class="location">
+  <div class="content">
+    <h2>ЛОКАЦИЯ</h2>
+    <p><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
+  </div>
+</section>
+
+<section class="details">
+  <div class="content">
+    <h2>ДЕТАЛИ</h2>
+
+    <h3>ДРЕСС-КОД</h3>
+    <p>
+      Для нас самое главное – ваше присутствие.<br>
+      Но будем очень благодарны, если поддержите цветовую гамму свадьбы.
+    </p>
+
+    <div class="colors">
+      <span class="c1"></span>
+      <span class="c2"></span>
+      <span class="c3"></span>
+      <span class="c4"></span>
+      <span class="c5"></span>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>18+</h3>
+    <p>
+      Просим оставить ваших малышей в надёжных руках на день торжества,
+      так как формат нашей свадьбы не предполагает детской зоны и аниматоров.
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>КОНТАКТЫ</h3>
+    <p class="contacts">
+      По всем вопросам обращайтесь:<br>
+      +7 987 101-38-65 — Вадим<br>
+      +7 964 955-52-60 — Алсу ♥️
+    </p>
+  </div>
+</section>
+
+<footer>
+  С любовью, Вадим & Алсу
+</footer>
+
 <script>
   const gallery = document.getElementById('weGallery');
   const images = [...gallery.children];
   images.forEach(img => gallery.appendChild(img.cloneNode(true)));
 
   let speed = 0.25;
-  let isPaused = false;
+  let paused = false;
 
   setInterval(() => {
-    if (!isPaused) {
+    if (!paused) {
       gallery.scrollLeft += speed;
       if (gallery.scrollLeft >= gallery.scrollWidth / 2) {
         gallery.scrollLeft = 0;
@@ -269,8 +322,8 @@
     }
   }, 16);
 
-  gallery.addEventListener('touchstart', () => isPaused = true);
-  gallery.addEventListener('touchend', () => isPaused = false);
+  gallery.addEventListener('touchstart', () => paused = true);
+  gallery.addEventListener('touchend', () => paused = false);
 </script>
 
 </body>
