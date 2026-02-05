@@ -39,7 +39,6 @@ h2, h3 {
 /* ===== HERO ===== */
 .hero {
   position: relative;
-  width: 100vw;
   height: 80vh;
   min-height: 560px;
   background: url("./images/FonHero.png") center 25% / cover no-repeat;
@@ -65,7 +64,6 @@ h2, h3 {
   font-family: 'Playfair Display', serif;
   font-size: 44px;
   color: #fff;
-  line-height: 1.2;
   z-index: 2;
 }
 
@@ -83,63 +81,62 @@ h2, h3 {
   overflow: hidden;
 }
 
-/* Заголовок */
 .we-title {
   position: absolute;
   top: 30px;
   width: 100%;
-  text-align: center;
-  font-family: 'Playfair Display', serif;
   font-size: 32px;
-  color: #ffffff;
-  letter-spacing: 1px;
+  color: #fff;
   z-index: 2;
 }
 
-/* Центрирование галереи и текста */
 .we-center {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Галерея */
-.we-gallery {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 16px;
-  padding: 0 20px;
+/* viewport со скроллом */
+.we-gallery-viewport {
+  width: 100vw;
   overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
-.we-gallery::-webkit-scrollbar {
+.we-gallery-viewport::-webkit-scrollbar {
   display: none;
 }
 
+/* лента */
+.we-gallery {
+  display: flex;
+  gap: 16px;
+  padding: 0 20px;
+  width: max-content;
+}
+
+/* фото */
 .we-gallery img {
-  flex: 0 0 auto;
   width: 260px;
   height: 360px;
+  flex: 0 0 auto;
   object-fit: cover;
   border-radius: 18px;
   user-select: none;
 }
 
-/* Текст под галереей */
 .we-text {
-  margin-top: 16px; /* расстояние между галереей и текстом */
-  color: #ffffff;
+  margin-top: 12px;
+  color: #fff;
   font-size: 15px;
   line-height: 1.5;
-  text-align: center;
   max-width: 90%;
-  opacity: 0.95;
 }
 
 /* ===== TIMING ===== */
@@ -148,7 +145,6 @@ h2, h3 {
   justify-content: space-between;
   border-bottom: 1px solid #d8cfc6;
   padding: 12px 0;
-  margin: 10px 0;
   font-size: 15px;
 }
 
@@ -157,7 +153,7 @@ h2, h3 {
   position: relative;
   height: 700px;
   background: url("./images/FonLocation.png") center/cover no-repeat;
-  color: #ffffff;
+  color: #fff;
 }
 
 .location::before {
@@ -185,7 +181,6 @@ h2, h3 {
   height: 1px;
   background: #bfae9e;
   margin: 35px auto;
-  opacity: 0.7;
 }
 
 .colors {
@@ -208,10 +203,6 @@ h2, h3 {
 .c4 { background: #d6e4e7; }
 .c5 { background: #d6cdbf; }
 
-.contacts {
-  line-height: 1.8;
-}
-
 footer {
   padding: 30px 0;
   font-size: 12px;
@@ -222,12 +213,10 @@ footer {
 
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <div class="names">ВАДИМ<br>&amp;<br>АЛСУ</div>
 </section>
 
-<!-- INVITE -->
 <section class="invite">
   <div class="content">
     <p><strong>ДОРОГИЕ ДРУЗЬЯ И РОДНЫЕ!</strong></p>
@@ -241,24 +230,25 @@ footer {
   </div>
 </section>
 
-<!-- МЫ -->
 <section class="about-us">
   <h2 class="we-title">НАШИ СЧАСТЛИВЫЕ МОМЕНТЫ</h2>
 
   <div class="we-center">
-    <div class="we-gallery" id="weGallery">
-      <img src="./images/We1.jpg" loading="lazy">
-      <img src="./images/We2.jpg" loading="lazy">
-      <img src="./images/We3.jpg" loading="lazy">
-      <img src="./images/We4.jpg" loading="lazy">
-      <img src="./images/We5.jpg" loading="lazy">
-      <img src="./images/We6.jpg" loading="lazy">
-      <img src="./images/We7.jpg" loading="lazy">
-      <img src="./images/We8.jpg" loading="lazy">
-      <img src="./images/We9.jpg" loading="lazy">
-      <img src="./images/We10.jpg" loading="lazy">
-      <img src="./images/We11.jpg" loading="lazy">
-      <img src="./images/We12.jpg" loading="lazy">
+    <div class="we-gallery-viewport">
+      <div class="we-gallery" id="weGallery">
+        <img src="./images/We1.jpg" loading="lazy">
+        <img src="./images/We2.jpg" loading="lazy">
+        <img src="./images/We3.jpg" loading="lazy">
+        <img src="./images/We4.jpg" loading="lazy">
+        <img src="./images/We5.jpg" loading="lazy">
+        <img src="./images/We6.jpg" loading="lazy">
+        <img src="./images/We7.jpg" loading="lazy">
+        <img src="./images/We8.jpg" loading="lazy">
+        <img src="./images/We9.jpg" loading="lazy">
+        <img src="./images/We10.jpg" loading="lazy">
+        <img src="./images/We11.jpg" loading="lazy">
+        <img src="./images/We12.jpg" loading="lazy">
+      </div>
     </div>
 
     <p class="we-text">
@@ -268,7 +258,6 @@ footer {
   </div>
 </section>
 
-<!-- TIMING -->
 <section>
   <div class="content">
     <h2>ТАЙМИНГ</h2>
@@ -279,7 +268,6 @@ footer {
   </div>
 </section>
 
-<!-- LOCATION -->
 <section class="location">
   <div class="content">
     <h2>ЛОКАЦИЯ</h2>
@@ -287,7 +275,6 @@ footer {
   </div>
 </section>
 
-<!-- DETAILS -->
 <section class="details">
   <div class="content">
     <h2>ДЕТАЛИ</h2>
@@ -317,7 +304,7 @@ footer {
     <div class="divider"></div>
 
     <h3>КОНТАКТЫ</h3>
-    <p class="contacts">
+    <p>
       По всем вопросам обращайтесь:<br>
       +7 987 101-38-65 — Вадим<br>
       +7 964 955-52-60 — Алсу ♥️
@@ -330,24 +317,31 @@ footer {
 </footer>
 
 <script>
+const viewport = document.querySelector('.we-gallery-viewport');
 const gallery = document.getElementById('weGallery');
-const images = [...gallery.children];
-images.forEach(img => gallery.appendChild(img.cloneNode(true)));
+
+// дублируем ленту
+[...gallery.children].forEach(img => {
+  gallery.appendChild(img.cloneNode(true));
+});
 
 let speed = 0.25;
 let paused = false;
 
-setInterval(() => {
+function loop() {
   if (!paused) {
-    gallery.scrollLeft += speed;
-    if (gallery.scrollLeft >= gallery.scrollWidth / 2) {
-      gallery.scrollLeft = 0;
+    viewport.scrollLeft += speed;
+    if (viewport.scrollLeft >= gallery.scrollWidth / 2) {
+      viewport.scrollLeft = 0;
     }
   }
-}, 16);
+  requestAnimationFrame(loop);
+}
 
-gallery.addEventListener('touchstart', () => paused = true);
-gallery.addEventListener('touchend', () => paused = false);
+viewport.addEventListener('touchstart', () => paused = true);
+viewport.addEventListener('touchend', () => paused = false);
+
+loop();
 </script>
 
 </body>
