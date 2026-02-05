@@ -67,49 +67,73 @@ section {
 }
 
 /* ===== МЫ ===== */
+/* ===== МЫ (НОВАЯ ВЕРСИЯ) ===== */
 .about-us {
   position: relative;
-  min-height: 55vh; /* блок уменьшен */
-  padding: 120px 0 90px;
-  background: url("./images/FonWe.png") center/cover no-repeat;
+  height: 55vh; /* уменьшили блок ≈ на 30% */
+  min-height: 420px;
+  background: url("./images/FonWe.png") center / cover no-repeat;
+  padding: 0;
+  overflow: hidden;
 }
 
-.gallery-wrapper {
-  margin-top: 60px; /* опускаем галерею ниже */
+/* Обёртка галереи */
+.we-gallery-wrapper {
+  position: absolute;
+  top: 140px; /* опустили галерею ниже */
+  left: 0;
+  width: 100vw;
+  overflow: hidden;
 }
 
-.gallery-horizontal {
+/* САМА ГАЛЕРЕЯ — ЖЁСТКО ГОРИЗОНТАЛЬ */
+.we-gallery {
   display: flex;
-  flex-direction: row;          /* КРИТИЧНО */
-  gap: 14px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  gap: 16px;
+  padding: 0 20px;
+
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+
+  scroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 0 20px 12px;
 }
 
-.gallery-horizontal::-webkit-scrollbar {
+.we-gallery::-webkit-scrollbar {
   display: none;
 }
 
-.gallery-horizontal img {
+/* ФОТО — ФИКСИРОВАННЫЙ РАЗМЕР */
+.we-gallery img {
   flex: 0 0 auto;
-  width: 75vw;
-  max-width: 320px;              /* защита от гигантских фото */
-  aspect-ratio: 3 / 4;
+
+  width: 260px;
+  height: 360px;
+
   object-fit: cover;
   border-radius: 18px;
-  scroll-snap-align: center;
+
+  user-select: none;
+  pointer-events: auto;
 }
 
-.about-text {
-  margin: 50px auto 0;
-  max-width: 360px;
-  font-size: 14px;
-  line-height: 1.6;
+/* ТЕКСТ ПОД ГАЛЕРЕЕЙ */
+.we-text {
+  position: absolute;
+  bottom: 40px;
+
+  width: 100%;
+  padding: 0 24px;
+
   color: #ffffff;
-  opacity: 0.9;
+  font-size: 15px;
+  line-height: 1.5;
+
+  text-align: center;
+  opacity: 0.95;
 }
 
 /* ===== TIMING ===== */
@@ -202,24 +226,10 @@ footer {
 </section>
 
 <!-- МЫ -->
+<!-- МЫ -->
 <section class="about-us">
-  <div class="gallery-wrapper">
-    <div class="gallery-horizontal" id="gallery">
-      <!-- первый набор -->
-      <img src="./images/We1.jpg" loading="lazy" alt="">
-      <img src="./images/We2.jpg" loading="lazy" alt="">
-      <img src="./images/We3.jpg" loading="lazy" alt="">
-      <img src="./images/We4.jpg" loading="lazy" alt="">
-      <img src="./images/We5.jpg" loading="lazy" alt="">
-      <img src="./images/We6.jpg" loading="lazy" alt="">
-      <img src="./images/We7.jpg" loading="lazy" alt="">
-      <img src="./images/We8.jpg" loading="lazy" alt="">
-      <img src="./images/We9.jpg" loading="lazy" alt="">
-      <img src="./images/We10.jpg" loading="lazy" alt="">
-      <img src="./images/We11.jpg" loading="lazy" alt="">
-      <img src="./images/We12.jpg" loading="lazy" alt="">
-
-      <!-- второй набор (для зацикливания) -->
+  <div class="we-gallery-wrapper">
+    <div class="we-gallery" id="weGallery">
       <img src="./images/We1.jpg" loading="lazy" alt="">
       <img src="./images/We2.jpg" loading="lazy" alt="">
       <img src="./images/We3.jpg" loading="lazy" alt="">
@@ -233,13 +243,14 @@ footer {
       <img src="./images/We11.jpg" loading="lazy" alt="">
       <img src="./images/We12.jpg" loading="lazy" alt="">
     </div>
-
-    <p class="about-text">
-      Не ищите любви, ищите того, кто принесёт вам счастье.
-      Рано или поздно это счастье превратится в любовь.
-    </p>
   </div>
+
+  <p class="we-text">
+    Не ищите любви, ищите того, кто принесёт вам счастье.<br>
+    Рано или поздно это счастье превратится в любовь.
+  </p>
 </section>
+
 
 
 <section>
@@ -264,37 +275,41 @@ footer {
 </footer>
 
 <script>
-  const gallery = document.getElementById('gallery');
+  const gallery = document.getElementById('weGallery');
+
+  // Дублируем фото для бесконечной прокрутки
+  const images = [...gallery.children];
+  images.forEach(img => {
+    const clone = img.cloneNode(true);
+    gallery.appendChild(clone);
+  });
+
+  let speed = 0.25; // медленная автопрокрутка
   let autoScroll;
   let isPaused = false;
 
   function startAutoScroll() {
-    if (autoScroll) return;
-
     autoScroll = setInterval(() => {
-      if (isPaused) return;
-
-      gallery.scrollLeft += 0.35; // скорость (медленно)
-
-      // зацикливание
-      if (gallery.scrollLeft >= gallery.scrollWidth / 2) {
-        gallery.scrollLeft = 0;
+      if (!isPaused) {
+        gallery.scrollLeft += speed;
+        if (gallery.scrollLeft >= gallery.scrollWidth / 2) {
+          gallery.scrollLeft = 0;
+        }
       }
     }, 16);
   }
 
   function stopAutoScroll() {
     clearInterval(autoScroll);
-    autoScroll = null;
   }
 
-  // пауза при свайпе
+  // Пауза при касании
   gallery.addEventListener('touchstart', () => isPaused = true);
   gallery.addEventListener('touchend', () => isPaused = false);
   gallery.addEventListener('mouseenter', () => isPaused = true);
   gallery.addEventListener('mouseleave', () => isPaused = false);
 
-  // запуск только в зоне видимости
+  // Запуск только когда блок виден
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -303,10 +318,11 @@ footer {
         stopAutoScroll();
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.3 });
 
   observer.observe(gallery);
 </script>
+
 
 
 </body>
