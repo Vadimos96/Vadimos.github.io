@@ -1,215 +1,234 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Свадебное приглашение</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Свадебное приглашение</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #f3e7dc;
-      overflow-x: hidden;
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #f3e7dc;
+  overflow-x: hidden;
+}
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
-      color: #2b2b2b;
-    }
+body {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: #2b2b2b;
+}
 
-    section {
-      padding: 60px 20px;
-    }
+section {
+  padding: 60px 20px;
+}
 
-    .content {
-      max-width: 420px;
-      margin: 0 auto;
-    }
+.content {
+  max-width: 420px;
+  margin: 0 auto;
+}
 
-    h2, h3 {
-      font-family: 'Playfair Display', serif;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-    }
+h2, h3 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
 
-    /* ===== HERO ===== */
-    .hero {
-      position: relative;
-      width: 100vw;
-      height: 80vh;
-      min-height: 560px;
-      background: url("./images/FonHero.png") center 25% / cover no-repeat;
-    }
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+  min-height: 560px;
+  background: url("./images/FonHero.png") center 25% / cover no-repeat;
+}
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.25) 40%,
-        rgba(0,0,0,0) 70%
-      );
-    }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.25) 40%,
+    rgba(0,0,0,0) 70%
+  );
+}
 
-    .names {
-      position: absolute;
-      top: 390px;
-      left: 46%;
-      transform: translateX(-50%);
-      font-family: 'Playfair Display', serif;
-      font-size: 44px;
-      color: #fff;
-      line-height: 1.2;
-      z-index: 2;
-    }
+.names {
+  position: absolute;
+  top: 390px;
+  left: 46%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  color: #fff;
+  line-height: 1.2;
+  z-index: 2;
+}
 
-    /* ===== INVITE ===== */
-    .invite p {
-      line-height: 1.6;
-    }
+/* ===== INVITE ===== */
+.invite p {
+  line-height: 1.6;
+}
 
-    /* ===== МЫ ===== */
-    .about-us {
-      position: relative;
-      height: 90vh;
-      min-height: 520px;
-      background: url("./images/FonWe.png") center / cover no-repeat;
-      padding: 0;
-      overflow: hidden;
-    }
+/* ===== МЫ ===== */
+.about-us {
+  position: relative;
+  height: 90vh;
+  min-height: 520px;
+  background: url("./images/FonWe.png") center / cover no-repeat;
+  overflow: hidden;
+}
 
-    .we-gallery-wrapper {
-      position: absolute;
-      top: 220px;
-      left: 0;
-      width: 100vw;
-    }
+/* Заголовок */
+.we-title {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  z-index: 2;
+}
 
-    .we-gallery {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      gap: 16px;
-      padding: 0 20px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-    }
+/* Галерея */
+.we-gallery-wrapper {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 100vw;
+}
 
-    .we-gallery::-webkit-scrollbar {
-      display: none;
-    }
+.we-gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 16px;
+  padding: 0 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
 
-    .we-gallery img {
-      flex: 0 0 auto;
-      width: 260px;
-      height: 360px;
-      object-fit: cover;
-      border-radius: 18px;
-      user-select: none;
-    }
+.we-gallery::-webkit-scrollbar {
+  display: none;
+}
 
-    .we-text {
-      position: absolute;
-      bottom: 15px;
-      width: 100%;
-      padding: 0 24px;
-      color: #ffffff;
-      font-size: 15px;
-      line-height: 1.5;
-      opacity: 0.95;
-    }
+.we-gallery img {
+  flex: 0 0 auto;
+  width: 260px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 18px;
+  user-select: none;
+}
 
-    /* ===== TIMING ===== */
-    .time-row {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #d8cfc6;
-      padding: 12px 0;
-      margin: 10px 0;
-      font-size: 15px;
-    }
+/* Текст под галереей */
+.we-text {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  max-width: 90%;
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+  opacity: 0.95;
+}
 
-    /* ===== LOCATION ===== */
-    .location {
-      position: relative;
-      height: 700px;
-      background: url("./images/FonLocation.png") center/cover no-repeat;
-      color: #ffffff;
-    }
+/* ===== TIMING ===== */
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d8cfc6;
+  padding: 12px 0;
+  margin: 10px 0;
+  font-size: 15px;
+}
 
-    .location::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.35) 45%,
-        rgba(0,0,0,0.35) 55%,
-        rgba(0,0,0,0) 100%
-      );
-    }
+/* ===== LOCATION ===== */
+.location {
+  position: relative;
+  height: 700px;
+  background: url("./images/FonLocation.png") center/cover no-repeat;
+  color: #ffffff;
+}
 
-    .location .content {
-      position: relative;
-      top: 370px;
-      z-index: 2;
-    }
+.location::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.35) 45%,
+    rgba(0,0,0,0.35) 55%,
+    rgba(0,0,0,0) 100%
+  );
+}
 
-    /* ===== DETAILS ===== */
-    .divider {
-      width: 60px;
-      height: 1px;
-      background: #bfae9e;
-      margin: 35px auto;
-      opacity: 0.7;
-    }
+.location .content {
+  position: relative;
+  top: 370px;
+  z-index: 2;
+}
 
-    .colors {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 25px;
-    }
+/* ===== DETAILS ===== */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: #bfae9e;
+  margin: 35px auto;
+  opacity: 0.7;
+}
 
-    .colors span {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.15);
-    }
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
 
-    .c1 { background: #cbd6d2; }
-    .c2 { background: #e0afb3; }
-    .c3 { background: #e0afb3; }
-    .c4 { background: #d6e4e7; }
-    .c5 { background: #d6cdbf; }
+.colors span {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.15);
+}
 
-    .contacts {
-      line-height: 1.8;
-    }
+.c1 { background: #cbd6d2; }
+.c2 { background: #e0afb3; }
+.c3 { background: #e0afb3; }
+.c4 { background: #d6e4e7; }
+.c5 { background: #d6cdbf; }
 
-    footer {
-      padding: 30px 0;
-      font-size: 12px;
-      opacity: 0.7;
-    }
-  </style>
+.contacts {
+  line-height: 1.8;
+}
+
+footer {
+  padding: 30px 0;
+  font-size: 12px;
+  opacity: 0.7;
+}
+</style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <div class="names">ВАДИМ<br>&amp;<br>АЛСУ</div>
 </section>
 
+<!-- INVITE -->
 <section class="invite">
   <div class="content">
     <p><strong>ДОРОГИЕ ДРУЗЬЯ И РОДНЫЕ!</strong></p>
@@ -223,7 +242,10 @@
   </div>
 </section>
 
+<!-- МЫ -->
 <section class="about-us">
+  <h2 class="we-title">НАШИ СЧАСТЛИВЫЕ МОМЕНТЫ</h2>
+
   <div class="we-gallery-wrapper">
     <div class="we-gallery" id="weGallery">
       <img src="./images/We1.jpg" loading="lazy">
@@ -247,6 +269,7 @@
   </p>
 </section>
 
+<!-- TIMING -->
 <section>
   <div class="content">
     <h2>ТАЙМИНГ</h2>
@@ -257,6 +280,7 @@
   </div>
 </section>
 
+<!-- LOCATION -->
 <section class="location">
   <div class="content">
     <h2>ЛОКАЦИЯ</h2>
@@ -264,6 +288,7 @@
   </div>
 </section>
 
+<!-- DETAILS -->
 <section class="details">
   <div class="content">
     <h2>ДЕТАЛИ</h2>
@@ -306,24 +331,24 @@
 </footer>
 
 <script>
-  const gallery = document.getElementById('weGallery');
-  const images = [...gallery.children];
-  images.forEach(img => gallery.appendChild(img.cloneNode(true)));
+const gallery = document.getElementById('weGallery');
+const images = [...gallery.children];
+images.forEach(img => gallery.appendChild(img.cloneNode(true)));
 
-  let speed = 0.25;
-  let paused = false;
+let speed = 0.25;
+let paused = false;
 
-  setInterval(() => {
-    if (!paused) {
-      gallery.scrollLeft += speed;
-      if (gallery.scrollLeft >= gallery.scrollWidth / 2) {
-        gallery.scrollLeft = 0;
-      }
+setInterval(() => {
+  if (!paused) {
+    gallery.scrollLeft += speed;
+    if (gallery.scrollLeft >= gallery.scrollWidth / 2) {
+      gallery.scrollLeft = 0;
     }
-  }, 16);
+  }
+}, 16);
 
-  gallery.addEventListener('touchstart', () => paused = true);
-  gallery.addEventListener('touchend', () => paused = false);
+gallery.addEventListener('touchstart', () => paused = true);
+gallery.addEventListener('touchend', () => paused = false);
 </script>
 
 </body>
