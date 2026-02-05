@@ -309,29 +309,34 @@ footer {
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = document.getElementById('gallery');
-  let speed = 0.25;
-  let interacting = false;
 
-  ['touchstart','mousedown','wheel'].forEach(e =>
-    gallery.addEventListener(e, () => interacting = true)
-  );
-  ['touchend','mouseup','mouseleave'].forEach(e =>
-    gallery.addEventListener(e, () => interacting = false)
-  );
+  if (!gallery) return;
 
-  function autoScroll() {
-    if (!interacting) {
-      gallery.scrollLeft += speed;
-      if (gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 1) {
+  let isUserInteracting = false;
+  let scrollSpeed = 0.6; // заметная, но плавная скорость
+
+  // если пользователь трогает — пауза
+  ['touchstart', 'mousedown', 'wheel'].forEach(event => {
+    gallery.addEventListener(event, () => isUserInteracting = true, { passive: true });
+  });
+
+  ['touchend', 'mouseup', 'mouseleave'].forEach(event => {
+    gallery.addEventListener(event, () => isUserInteracting = false, { passive: true });
+  });
+
+  setInterval(() => {
+    if (!isUserInteracting) {
+      gallery.scrollLeft += scrollSpeed;
+
+      // зацикливание
+      if (gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 5) {
         gallery.scrollLeft = 0;
       }
     }
-    requestAnimationFrame(autoScroll);
-  }
-
-  autoScroll();
+  }, 20);
 });
 </script>
+
 
 </body>
 </html>
