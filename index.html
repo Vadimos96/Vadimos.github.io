@@ -96,14 +96,18 @@ h2, h3 {
   z-index: 2;
 }
 
-/* Галерея */
-.we-gallery-wrapper {
+/* Центрирование галереи и текста */
+.we-center {
   position: absolute;
-  top: 90px;
-  left: 0;
-  width: 100vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Галерея */
 .we-gallery {
   display: flex;
   flex-direction: row;
@@ -111,7 +115,6 @@ h2, h3 {
   gap: 16px;
   padding: 0 20px;
   overflow-x: auto;
-  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -130,16 +133,12 @@ h2, h3 {
 
 /* Текст под галереей */
 .we-text {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  max-width: 90%;
+  margin-top: 16px; /* расстояние между галереей и текстом */
   color: #ffffff;
   font-size: 15px;
   line-height: 1.5;
   text-align: center;
+  max-width: 90%;
   opacity: 0.95;
 }
 
@@ -246,7 +245,7 @@ footer {
 <section class="about-us">
   <h2 class="we-title">НАШИ СЧАСТЛИВЫЕ МОМЕНТЫ</h2>
 
-  <div class="we-gallery-wrapper">
+  <div class="we-center">
     <div class="we-gallery" id="weGallery">
       <img src="./images/We1.jpg" loading="lazy">
       <img src="./images/We2.jpg" loading="lazy">
@@ -261,12 +260,12 @@ footer {
       <img src="./images/We11.jpg" loading="lazy">
       <img src="./images/We12.jpg" loading="lazy">
     </div>
-  </div>
 
-  <p class="we-text">
-    Не ищите любви, ищите того, кто принесёт вам счастье.<br>
-    Рано или поздно это счастье превратится в любовь.
-  </p>
+    <p class="we-text">
+      Не ищите любви, ищите того, кто принесёт вам счастье.<br>
+      Рано или поздно это счастье превратится в любовь.
+    </p>
+  </div>
 </section>
 
 <!-- TIMING -->
