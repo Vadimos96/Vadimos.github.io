@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Свадебное приглашение</title>
 
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- Preload ТОЛЬКО hero -->
+<link rel="preload" as="image" href="./images/FonHero.png">
 
 <style>
 html, body {
@@ -74,7 +78,7 @@ h2, h3 {
 
 /* ===== МЫ / ГАЛЕРЕЯ ===== */
 .about-us {
-  min-height: 60vh;
+  min-height: 85vh;
   padding: 260px 0 180px;
   background: url("./images/FonWe.png") center/cover no-repeat;
 }
@@ -98,9 +102,9 @@ h2, h3 {
 }
 
 .gallery-track img {
-  flex: 0 0 240px;
   width: 240px;
   height: 320px;
+  flex-shrink: 0;
   object-fit: cover;
   border-radius: 18px;
 }
@@ -219,18 +223,18 @@ footer {
 
   <div class="gallery-wrapper" id="gallery">
     <div class="gallery-track">
-      <img src="./images/We1.jpg">
-      <img src="./images/We2.jpg">
-      <img src="./images/We3.jpg">
-      <img src="./images/We4.jpg">
-      <img src="./images/We5.jpg">
-      <img src="./images/We6.jpg">
-      <img src="./images/We7.jpg">
-      <img src="./images/We8.jpg">
-      <img src="./images/We9.jpg">
-      <img src="./images/We10.jpg">
-      <img src="./images/We11.jpg">
-      <img src="./images/We12.jpg">
+      <img src="./images/We1.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We2.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We3.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We4.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We5.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We6.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We7.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We8.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We9.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We10.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We11.jpg" loading="lazy" width="240" height="320">
+      <img src="./images/We12.jpg" loading="lazy" width="240" height="320">
     </div>
   </div>
 
@@ -303,26 +307,30 @@ footer {
 </footer>
 
 <script>
-/* автопрокрутка + свайп в обе стороны */
-const gallery = document.getElementById('gallery');
-let speed = 0.15;
-let isUserScrolling = false;
+document.addEventListener('DOMContentLoaded', () => {
+  const gallery = document.getElementById('gallery');
+  let speed = 0.25;
+  let interacting = false;
 
-gallery.addEventListener('touchstart', () => isUserScrolling = true);
-gallery.addEventListener('touchend', () => isUserScrolling = false);
-gallery.addEventListener('mousedown', () => isUserScrolling = true);
-gallery.addEventListener('mouseup', () => isUserScrolling = false);
+  ['touchstart','mousedown','wheel'].forEach(e =>
+    gallery.addEventListener(e, () => interacting = true)
+  );
+  ['touchend','mouseup','mouseleave'].forEach(e =>
+    gallery.addEventListener(e, () => interacting = false)
+  );
 
-function autoScroll() {
-  if (!isUserScrolling) {
-    gallery.scrollLeft += speed;
-    if (gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth) {
-      gallery.scrollLeft = 0;
+  function autoScroll() {
+    if (!interacting) {
+      gallery.scrollLeft += speed;
+      if (gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 1) {
+        gallery.scrollLeft = 0;
+      }
     }
+    requestAnimationFrame(autoScroll);
   }
-  requestAnimationFrame(autoScroll);
-}
-autoScroll();
+
+  autoScroll();
+});
 </script>
 
 </body>
