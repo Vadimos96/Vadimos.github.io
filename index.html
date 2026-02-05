@@ -69,47 +69,47 @@ section {
 /* ===== МЫ ===== */
 .about-us {
   position: relative;
-  min-height: 50vh; /* уменьшили на ~30% */
-  padding: 80px 0 90px;
+  min-height: 55vh; /* блок уменьшен */
+  padding: 120px 0 90px;
   background: url("./images/FonWe.png") center/cover no-repeat;
 }
 
-/* ===== GALERY ===== */
 .gallery-wrapper {
-  margin-top: 40px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: auto;
+  margin-top: 60px; /* опускаем галерею ниже */
 }
 
-.gallery-wrapper::-webkit-scrollbar {
+.gallery-horizontal {
+  display: flex;
+  flex-direction: row;          /* КРИТИЧНО */
+  gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 20px 12px;
+}
+
+.gallery-horizontal::-webkit-scrollbar {
   display: none;
 }
 
-.gallery-track img {
+.gallery-horizontal img {
   flex: 0 0 auto;
   width: 75vw;
-  max-width: 320px;
+  max-width: 320px;              /* защита от гигантских фото */
   aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 18px;
+  scroll-snap-align: center;
 }
 
-
-.gallery-track img {
-  flex: 0 0 75%;
-  max-width: 75%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: 18px;
-}
-
-.gallery-text {
-  margin-top: 35px;
-  padding: 0 25px;
-  color: #fff;
-  font-family: 'Playfair Display', serif;
-  line-height: 1.5;
+.about-text {
+  margin: 50px auto 0;
+  max-width: 360px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ffffff;
+  opacity: 0.9;
 }
 
 /* ===== TIMING ===== */
@@ -202,29 +202,45 @@ footer {
 </section>
 
 <!-- МЫ -->
-<section class="about-us" id="about">
-  <div class="gallery-wrapper" id="gallery">
-    <div class="gallery-track" id="track">
-      <img src="./images/We1.jpg">
-      <img src="./images/We2.jpg">
-      <img src="./images/We3.jpg">
-      <img src="./images/We4.jpg">
-      <img src="./images/We5.jpg">
-      <img src="./images/We6.jpg">
-      <img src="./images/We7.jpg">
-      <img src="./images/We8.jpg">
-      <img src="./images/We9.jpg">
-      <img src="./images/We10.jpg">
-      <img src="./images/We11.jpg">
-      <img src="./images/We12.jpg">
-    </div>
-  </div>
+<section class="about-us">
+  <div class="gallery-wrapper">
+    <div class="gallery-horizontal" id="gallery">
+      <!-- первый набор -->
+      <img src="./images/We1.jpg" loading="lazy" alt="">
+      <img src="./images/We2.jpg" loading="lazy" alt="">
+      <img src="./images/We3.jpg" loading="lazy" alt="">
+      <img src="./images/We4.jpg" loading="lazy" alt="">
+      <img src="./images/We5.jpg" loading="lazy" alt="">
+      <img src="./images/We6.jpg" loading="lazy" alt="">
+      <img src="./images/We7.jpg" loading="lazy" alt="">
+      <img src="./images/We8.jpg" loading="lazy" alt="">
+      <img src="./images/We9.jpg" loading="lazy" alt="">
+      <img src="./images/We10.jpg" loading="lazy" alt="">
+      <img src="./images/We11.jpg" loading="lazy" alt="">
+      <img src="./images/We12.jpg" loading="lazy" alt="">
 
-  <div class="gallery-text">
-    Не ищите любви, ищите того, кто принесёт вам счастье.<br>
-    Рано или поздно это счастье превратится в любовь.
+      <!-- второй набор (для зацикливания) -->
+      <img src="./images/We1.jpg" loading="lazy" alt="">
+      <img src="./images/We2.jpg" loading="lazy" alt="">
+      <img src="./images/We3.jpg" loading="lazy" alt="">
+      <img src="./images/We4.jpg" loading="lazy" alt="">
+      <img src="./images/We5.jpg" loading="lazy" alt="">
+      <img src="./images/We6.jpg" loading="lazy" alt="">
+      <img src="./images/We7.jpg" loading="lazy" alt="">
+      <img src="./images/We8.jpg" loading="lazy" alt="">
+      <img src="./images/We9.jpg" loading="lazy" alt="">
+      <img src="./images/We10.jpg" loading="lazy" alt="">
+      <img src="./images/We11.jpg" loading="lazy" alt="">
+      <img src="./images/We12.jpg" loading="lazy" alt="">
+    </div>
+
+    <p class="about-text">
+      Не ищите любви, ищите того, кто принесёт вам счастье.
+      Рано или поздно это счастье превратится в любовь.
+    </p>
   </div>
 </section>
+
 
 <section>
   <div class="content">
@@ -248,45 +264,50 @@ footer {
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
   const gallery = document.getElementById('gallery');
-  const track = document.getElementById('track');
+  let autoScroll;
+  let isPaused = false;
 
-  // дублируем изображения
-  track.innerHTML += track.innerHTML;
+  function startAutoScroll() {
+    if (autoScroll) return;
 
-  let isVisible = false;
-  let isUser = false;
-  let speed = 0.4;
+    autoScroll = setInterval(() => {
+      if (isPaused) return;
 
-  const observer = new IntersectionObserver(entries => {
-    isVisible = entries[0].isIntersecting;
-  }, { threshold: 0.3 });
+      gallery.scrollLeft += 0.35; // скорость (медленно)
 
-  observer.observe(document.getElementById('about'));
-
-  ['touchstart', 'mousedown', 'wheel'].forEach(e =>
-    gallery.addEventListener(e, () => isUser = true, { passive: true })
-  );
-
-  ['touchend', 'mouseup', 'mouseleave'].forEach(e =>
-    gallery.addEventListener(e, () => isUser = false, { passive: true })
-  );
-
-  function autoScroll() {
-    if (isVisible && !isUser) {
-      gallery.scrollLeft += speed;
-
-      if (gallery.scrollLeft >= track.scrollWidth / 2) {
+      // зацикливание
+      if (gallery.scrollLeft >= gallery.scrollWidth / 2) {
         gallery.scrollLeft = 0;
       }
-    }
-    requestAnimationFrame(autoScroll);
+    }, 16);
   }
 
-  autoScroll();
-});
+  function stopAutoScroll() {
+    clearInterval(autoScroll);
+    autoScroll = null;
+  }
+
+  // пауза при свайпе
+  gallery.addEventListener('touchstart', () => isPaused = true);
+  gallery.addEventListener('touchend', () => isPaused = false);
+  gallery.addEventListener('mouseenter', () => isPaused = true);
+  gallery.addEventListener('mouseleave', () => isPaused = false);
+
+  // запуск только в зоне видимости
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startAutoScroll();
+      } else {
+        stopAutoScroll();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(gallery);
 </script>
+
 
 </body>
 </html>
