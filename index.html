@@ -145,43 +145,49 @@ h2, h3 {
 /* ===== ABOUT US ===== */
 .about-us {
   position: relative;
-  height: 90vh;
   min-height: 520px;
   background: url("./images/FonWe.png") center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* центрируем горизонтально */
+  justify-content: center; /* центрируем вертикально */
+  padding-top: 120px; /* оставляем место для заголовка */
   overflow: hidden;
 }
 
 .we-title {
-  position: absolute;
-  top: 120px;
-  width: 100%;
   font-size: 25px;
   color: #fff;
-  z-index: 2;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .we-center {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Новый стиль галереи */
+/* Галерея */
 .we-gallery-viewport {
   width: 100%;
-  overflow: hidden; /* убираем лишние полосы */
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
   padding: 0 20px;
   box-sizing: border-box;
+}
+
+.we-gallery-viewport::-webkit-scrollbar {
+  display: none;
 }
 
 .we-gallery {
   display: flex;
   gap: 16px;
-  flex-wrap: nowrap;
+  width: max-content;
 }
 
 .we-gallery img {
@@ -190,6 +196,7 @@ h2, h3 {
   object-fit: cover;
   border-radius: 18px;
   flex-shrink: 0;
+  user-select: none;
 }
 
 .we-text {
@@ -309,7 +316,7 @@ footer {
   </h2>
 
   <div class="we-center">
-    <div class="we-gallery-viewport">
+    <div class="we-gallery-viewport" id="weViewport">
       <div class="we-gallery" id="weGallery">
         <img src="./images/We1.jpg" loading="lazy">
         <img src="./images/We2.jpg" loading="lazy">
@@ -392,38 +399,40 @@ footer {
 </footer>
 
 <script>
-/* Бесконечная анимация галереи */
+/* Бесконечная галерея через scrollLeft */
+const viewport = document.getElementById('weViewport');
 const gallery = document.getElementById('weGallery');
-const galleryImages = Array.from(gallery.children);
-let offset = 0;
 
-// Дублируем картинки визуально для плавного бесконечного скролла
-galleryImages.forEach(img => {
-  const clone = img.cloneNode(true);
-  gallery.appendChild(clone);
-});
+// дублируем изображения для плавного бесконечного скролла
+[...gallery.children].forEach(img => gallery.appendChild(img.cloneNode(true)));
 
-function animateGallery() {
-  offset -= 0.25;
-  if (Math.abs(offset) >= gallery.scrollWidth / 2) offset = 0;
-  gallery.style.transform = `translateX(${offset}px)`;
-  requestAnimationFrame(animateGallery);
+let speed = 0.25;
+let paused = false;
+
+function loop() {
+  if (!paused) {
+    viewport.scrollLeft += speed;
+    if (viewport.scrollLeft >= gallery.scrollWidth / 2) {
+      viewport.scrollLeft = 0;
+    }
+  }
+  requestAnimationFrame(loop);
 }
 
-animateGallery();
+viewport.addEventListener('mouseenter', () => paused = true);
+viewport.addEventListener('mouseleave', () => paused = false);
+viewport.addEventListener('touchstart', () => paused = true);
+viewport.addEventListener('touchend', () => paused = false);
+
+loop();
 
 /* RSVP popover */
 const btn = document.getElementById('rsvpBtn');
 const popover = document.getElementById('rsvpPopover');
 
-btn.addEventListener('click', () => {
-  popover.classList.toggle('active');
-});
-
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.rsvp-wrapper')) {
-    popover.classList.remove('active');
-  }
+btn.addEventListener('click', () => popover.classList.toggle('active'));
+document.addEventListener('click', e => {
+  if (!e.target.closest('.rsvp-wrapper')) popover.classList.remove('active');
 });
 </script>
 
