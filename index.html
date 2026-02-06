@@ -147,12 +147,11 @@ h2, h3 {
   position: relative;
   min-height: 520px;
   background: url("./images/FonWe.png") center / cover no-repeat;
+  overflow: hidden;
+  padding-top: 120px; /* место для заголовка */
   display: flex;
   flex-direction: column;
-  align-items: center; /* центрируем горизонтально */
-  justify-content: center; /* центрируем вертикально */
-  padding-top: 120px; /* оставляем место для заголовка */
-  overflow: hidden;
+  align-items: center;
 }
 
 .we-title {
@@ -166,18 +165,16 @@ h2, h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 420px; /* чтобы галерея и текст не сжимались */
+  width: 100%;
 }
 
-/* Галерея */
 .we-gallery-viewport {
   width: 100%;
-  max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  padding: 0 20px;
-  box-sizing: border-box;
 }
 
 .we-gallery-viewport::-webkit-scrollbar {
@@ -187,6 +184,7 @@ h2, h3 {
 .we-gallery {
   display: flex;
   gap: 16px;
+  padding: 0 20px;
   width: max-content;
 }
 
@@ -204,7 +202,8 @@ h2, h3 {
   color: #fff;
   font-size: 17px;
   line-height: 1.5;
-  max-width: 90%;
+  width: calc(100% - 40px);
+  max-width: 420px;
   text-align: center;
 }
 
@@ -403,7 +402,7 @@ footer {
 const viewport = document.getElementById('weViewport');
 const gallery = document.getElementById('weGallery');
 
-// дублируем изображения для плавного бесконечного скролла
+// дублируем изображения
 [...gallery.children].forEach(img => gallery.appendChild(img.cloneNode(true)));
 
 let speed = 0.25;
