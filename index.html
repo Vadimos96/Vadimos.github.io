@@ -72,16 +72,17 @@ h2, h3 {
   line-height: 1.6;
 }
 
-/* ===== RSVP BUTTON (ДОБАВЛЕНО) ===== */
+/* ===== RSVP BUTTON ===== */
 .rsvp-btn {
   margin-top: 25px;
-  padding: 14px 36px;
-  border-radius: 40px;
-  border: 1px solid #bfae9e;
-  background: transparent;
-  font-family: 'Playfair Display', serif;
-  font-size: 15px;
+  padding: 14px 34px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
   letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid #bfae9e;
+  color: #2b2b2b;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -225,7 +226,7 @@ footer {
   opacity: 0.7;
 }
 
-/* ===== MODAL (ДОБАВЛЕНО) ===== */
+/* ===== MODAL ===== */
 .rsvp-modal {
   position: fixed;
   inset: 0;
@@ -240,33 +241,50 @@ footer {
   display: flex;
 }
 
-.rsvp-content {
+.rsvp-box {
   background: #f3e7dc;
-  padding: 40px 30px;
-  border-radius: 20px;
-  text-align: center;
+  padding: 35px 25px;
   width: 90%;
-  max-width: 300px;
+  max-width: 320px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.rsvp-box h3 {
+  margin-bottom: 25px;
+  font-size: 18px;
 }
 
 .rsvp-link {
   display: block;
-  margin-bottom: 15px;
-  padding: 14px 0;
+  padding: 14px;
+  margin-bottom: 12px;
   border-radius: 30px;
   text-decoration: none;
-  font-family: 'Playfair Display', serif;
+  font-size: 14px;
   letter-spacing: 1px;
-  color: #2b2b2b;
+  transition: 0.3s;
 }
 
-.whatsapp { background: #d6e4e7; }
-.telegram { background: #e0afb3; }
+.rsvp-link.whatsapp {
+  background: #25d366;
+  color: #fff;
+}
+
+.rsvp-link.telegram {
+  background: #229ED9;
+  color: #fff;
+}
+
+.rsvp-link:hover {
+  opacity: 0.85;
+}
 
 .rsvp-close {
+  margin-top: 15px;
   background: none;
   border: none;
-  font-size: 13px;
+  font-size: 12px;
   opacity: 0.6;
   cursor: pointer;
 }
@@ -290,28 +308,110 @@ footer {
     </p>
     <h3>18.04.26</h3>
 
-    <!-- КНОПКА (ДОБАВЛЕНО) -->
-    <button class="rsvp-btn" id="openRsvp">Подтвердить присутствие</button>
+    <button class="rsvp-btn" id="rsvpBtn">Подтвердить присутствие</button>
   </div>
 </section>
 
-<!-- ВЕСЬ ОСТАЛЬНОЙ КОНТЕНТ САЙТА БЕЗ ИЗМЕНЕНИЙ -->
+<section class="about-us">
+  <h2 class="we-title">
+    НАШИ СЧАСТЛИВЫЕ<br>
+    <span>МОМЕНТЫ</span>
+  </h2>
+
+  <div class="we-center">
+    <div class="we-gallery-viewport">
+      <div class="we-gallery" id="weGallery">
+        <img src="./images/We1.jpg" loading="lazy">
+        <img src="./images/We2.jpg" loading="lazy">
+        <img src="./images/We3.jpg" loading="lazy">
+        <img src="./images/We4.jpg" loading="lazy">
+        <img src="./images/We5.jpg" loading="lazy">
+        <img src="./images/We6.jpg" loading="lazy">
+        <img src="./images/We7.jpg" loading="lazy">
+        <img src="./images/We8.jpg" loading="lazy">
+        <img src="./images/We9.jpg" loading="lazy">
+        <img src="./images/We10.jpg" loading="lazy">
+        <img src="./images/We11.jpg" loading="lazy">
+        <img src="./images/We12.jpg" loading="lazy">
+      </div>
+    </div>
+
+    <p class="we-text">
+      Не ищите любви, ищите того, кто принесёт вам счастье.<br>
+      Рано или поздно это счастье превратится в любовь.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="content">
+    <h2>ТАЙМИНГ</h2>
+    <div class="time-row"><span>16:30</span><span>Сбор гостей / фуршет</span></div>
+    <div class="time-row"><span>17:00</span><span>Торжественная церемония</span></div>
+    <div class="time-row"><span>17:30</span><span>Праздничный ужин</span></div>
+    <div class="time-row"><span>23:00</span><span>Завершение банкета</span></div>
+  </div>
+</section>
+
+<section class="location">
+  <div class="content">
+    <h2>ЛОКАЦИЯ</h2>
+    <p><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
+  </div>
+</section>
+
+<section class="details">
+  <div class="content">
+    <h2>ДЕТАЛИ</h2>
+
+    <h3>ДРЕСС-КОД</h3>
+    <p>
+      Для нас самое главное – ваше присутствие.<br>
+      Но будем очень благодарны, если поддержите цветовую гамму свадьбы.
+    </p>
+
+    <div class="colors">
+      <span class="c1"></span>
+      <span class="c2"></span>
+      <span class="c3"></span>
+      <span class="c4"></span>
+      <span class="c5"></span>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>18+</h3>
+    <p>
+      Просим оставить ваших малышей в надёжных руках на день торжества,
+      так как формат нашей свадьбы не предполагает детской зоны и аниматоров.
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>КОНТАКТЫ</h3>
+    <p>
+      По всем вопросам обращайтесь:<br>
+      +7 987 101-38-65 — Вадим<br>
+      +7 964 955-52-60 — Алсу ♥️
+    </p>
+  </div>
+</section>
 
 <footer>
   С любовью, Вадим & Алсу
 </footer>
 
-<!-- MODAL (ДОБАВЛЕНО) -->
+<!-- MODAL -->
 <div class="rsvp-modal" id="rsvpModal">
-  <div class="rsvp-content">
-    <a class="rsvp-link whatsapp" href="https://wa.me/79871013865" target="_blank">WhatsApp</a>
-    <a class="rsvp-link telegram" href="https://t.me/+79649555260" target="_blank">Telegram</a>
-    <button class="rsvp-close" id="closeRsvp">Закрыть</button>
+  <div class="rsvp-box">
+    <h3>Подтвердите удобным способом</h3>
+    <a href="https://wa.me/79871013865" target="_blank" class="rsvp-link whatsapp">WhatsApp</a>
+    <a href="https://t.me/" target="_blank" class="rsvp-link telegram">Telegram</a>
+    <button class="rsvp-close" id="rsvpClose">Закрыть</button>
   </div>
 </div>
 
 <script>
-/* ===== ГАЛЕРЕЯ — БЕЗ ИЗМЕНЕНИЙ ===== */
 const viewport = document.querySelector('.we-gallery-viewport');
 const gallery = document.getElementById('weGallery');
 
@@ -337,14 +437,24 @@ viewport.addEventListener('touchend', () => paused = false);
 
 loop();
 
-/* ===== RSVP MODAL — ДОБАВЛЕНО ===== */
-const openBtn = document.getElementById('openRsvp');
-const modal = document.getElementById('rsvpModal');
-const closeBtn = document.getElementById('closeRsvp');
+/* RSVP */
+const rsvpBtn = document.getElementById('rsvpBtn');
+const rsvpModal = document.getElementById('rsvpModal');
+const rsvpClose = document.getElementById('rsvpClose');
 
-openBtn.onclick = () => modal.classList.add('active');
-closeBtn.onclick = () => modal.classList.remove('active');
-modal.onclick = e => { if (e.target === modal) modal.classList.remove('active'); };
+rsvpBtn.addEventListener('click', () => {
+  rsvpModal.classList.add('active');
+});
+
+rsvpClose.addEventListener('click', () => {
+  rsvpModal.classList.remove('active');
+});
+
+rsvpModal.addEventListener('click', (e) => {
+  if (e.target === rsvpModal) {
+    rsvpModal.classList.remove('active');
+  }
+});
 </script>
 
 </body>
