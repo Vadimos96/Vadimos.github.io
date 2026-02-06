@@ -97,10 +97,10 @@ h2, h3 {
 }
 
 .rsvp-popover {
-  margin-top: 15px;
+  margin-top: 14px;
   display: none;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   animation: slideDown 0.35s ease;
 }
 
@@ -109,26 +109,27 @@ h2, h3 {
 }
 
 .rsvp-link {
-  padding: 14px;
+  padding: 13px;
   border-radius: 30px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #2b2b2b;
+  border: 1px solid #bfae9e;
+  background: transparent;
+  transition: 0.3s;
+}
+
+.rsvp-link:hover {
+  background: #bfae9e;
   color: #fff;
-}
-
-.rsvp-link.whatsapp {
-  background: #25d366;
-}
-
-.rsvp-link.telegram {
-  background: #229ED9;
 }
 
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
@@ -196,13 +197,69 @@ h2, h3 {
   max-width: 90%;
 }
 
-/* ===== OTHER ===== */
+/* ===== TIMING ===== */
 .time-row {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #d8cfc6;
   padding: 12px 0;
+  font-size: 15px;
 }
+
+/* ===== LOCATION ===== */
+.location {
+  position: relative;
+  height: 700px;
+  background: url("./images/FonLocation.png") center/cover no-repeat;
+  color: #fff;
+}
+
+.location::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.35) 45%,
+    rgba(0,0,0,0.35) 55%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
+.location .content {
+  position: relative;
+  top: 370px;
+  z-index: 2;
+}
+
+/* ===== DETAILS ===== */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: #bfae9e;
+  margin: 35px auto;
+}
+
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.colors span {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+.c1 { background: #cbd6d2; }
+.c2 { background: #e0afb3; }
+.c3 { background: #e0afb3; }
+.c4 { background: #d6e4e7; }
+.c5 { background: #d6cdbf; }
 
 footer {
   padding: 30px 0;
@@ -234,17 +291,15 @@ footer {
       <button class="rsvp-btn" id="rsvpBtn">Подтвердить присутствие</button>
 
       <div class="rsvp-popover" id="rsvpPopover">
-        <a class="rsvp-link whatsapp"
-           href="https://wa.me/79871013865"
-           target="_blank">WhatsApp</a>
-
-        <a class="rsvp-link telegram"
-           href="https://t.me/@tomasorato"
-           target="_blank">Telegram</a>
+        <a class="rsvp-link" href="https://wa.me/79871013865" target="_blank">WhatsApp</a>
+        <a class="rsvp-link" href="https://t.me/tomasorato" target="_blank">Telegram</a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Дальше сайт полностью сохранён -->
+<!-- ABOUT US, TIMING, LOCATION, DETAILS, FOOTER — без изменений -->
 
 <footer>
   С любовью, Вадим & Алсу
