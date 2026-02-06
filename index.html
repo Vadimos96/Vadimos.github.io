@@ -149,7 +149,7 @@ h2, h3 {
   font-size: 25px;
   color: #fff;
   z-index: 2;
-  transform: translateX(-12px);
+  text-align: center;
 }
 
 .we-center {
@@ -208,7 +208,6 @@ h2, h3 {
 /* ===== LOCATION ===== */
 .location {
   position: relative;
-  height: 700px;
   background: url("./images/FonLocation.png") center/cover no-repeat;
   color: #fff;
 }
@@ -228,8 +227,39 @@ h2, h3 {
 
 .location .content {
   position: relative;
-  top: 370px;
   z-index: 2;
+}
+
+/* Встроенная карта */
+.location .map-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.map-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 28px;
+  border: 1px solid #bfae9e;
+  border-radius: 14px;
+  background: transparent;
+  color: #2b2b2b;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.map-btn:hover {
+  background: #bfae9e;
+  color: #fff;
 }
 
 /* ===== DETAILS ===== */
@@ -256,7 +286,7 @@ h2, h3 {
 
 .c1 { background: #cbd6d2; }
 .c2 { background: #e0afb3; }
-.c3 { background: #fadedb; } /* заменён цвет */
+.c3 { background: #fadedb; }
 .c4 { background: #d6e4e7; }
 .c5 { background: #d6cdbf; }
 
@@ -289,7 +319,7 @@ footer {
       <button class="rsvp-btn" id="rsvpBtn">Подтвердить присутствие</button>
       <div class="rsvp-menu" id="rsvpMenu">
         <a href="https://wa.me/79871013865" target="_blank">WhatsApp</a>
-        <a href="https://t.me/alsu_m_alsu" target="_blank">Telegram</a>
+        <a href="https://t.me/USERNAME" target="_blank">Telegram</a>
       </div>
     </div>
   </div>
@@ -340,12 +370,23 @@ footer {
   <div class="content">
     <h2>ЛОКАЦИЯ</h2>
     <p><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
+
+    <div class="map-container">
+      <iframe
+        src="https://yandex.ru/map-widget/v1/?um=constructor%3A7b8a2e2a2b5f06dba3fddc7dc1d2b4f17fa6f2c73e92fda9c5a0e01912b5d5c4&amp;source=constructor"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <a class="map-btn" href="https://yandex.ru/maps/?rtext=~Уфа,+Рихарда+Зорге+65" target="_blank">Построить маршрут</a>
   </div>
 </section>
 
 <section class="details">
   <div class="content">
-
     <h3>ДРЕСС-КОД</h3>
     <p>
       Для нас самое главное – ваше присутствие.<br>
