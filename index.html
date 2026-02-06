@@ -210,7 +210,8 @@ h2, h3 {
   position: relative;
   background: url("./images/FonLocation.png") center/cover no-repeat;
   color: #fff;
-  padding: 60px 20px;
+  padding: 80px 20px; /* увеличен padding сверху/снизу */
+  min-height: 650px;  /* увеличена высота */
 }
 
 .location .content {
@@ -221,12 +222,13 @@ h2, h3 {
 .location p {
   font-size: 18px; /* крупнее адрес */
   line-height: 1.5;
+  color: #fff;
 }
 
 /* Кнопка маршрута */
 .map-btn {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 12px 28px;
   border: 1px solid #bfae9e;
   border-radius: 14px;
@@ -357,7 +359,7 @@ footer {
     </p>
 
     <a class="map-btn" 
-       href="https://yandex.ru/maps/?rtext=~г.Уфа,+ул.Рихарда+Зорге+65&rtt=auto" 
+       href="https://yandex.ru/maps/?rtext=~54.7380,55.9673&rtt=auto" 
        target="_blank">
        Построить маршрут
     </a>
