@@ -72,28 +72,22 @@ h2, h3 {
   line-height: 1.6;
 }
 
-.invite h3 {
-  font-size: 36px;
-  margin-top: 20px;
-}
-
 /* ===== RSVP ===== */
-.rsvp-wrapper {
+.rsvp {
   position: relative;
   margin-top: 25px;
 }
 
 .rsvp-btn {
+  background: transparent;
+  border: 1px solid #bfae9e;
   padding: 14px 34px;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   letter-spacing: 1px;
-  text-transform: uppercase;
-  background: transparent;
-  border: 1px solid #bfae9e;
   color: #2b2b2b;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .rsvp-btn:hover {
@@ -101,86 +95,82 @@ h2, h3 {
   color: #fff;
 }
 
-.rsvp-popover {
-  margin-top: 14px;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  animation: slideDown 0.35s ease;
+.rsvp-menu {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f3e7dc;
+  border: 1px solid #d8cfc6;
+  border-radius: 14px;
+  padding: 10px 0;
+  width: 220px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
 }
 
-.rsvp-popover.active {
-  display: flex;
-}
-
-.rsvp-link {
-  padding: 13px;
-  border-radius: 30px;
+.rsvp-menu a {
+  display: block;
+  padding: 12px 0;
   text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
   color: #2b2b2b;
-  border: 1px solid #bfae9e;
-  background: transparent;
-  transition: 0.3s;
+  font-size: 14px;
 }
 
-.rsvp-link:hover {
-  background: #bfae9e;
-  color: #fff;
+.rsvp-menu a:hover {
+  background: rgba(0,0,0,0.04);
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.rsvp-menu.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-/* ===== ABOUT US ===== */
+/* ===== МЫ ===== */
 .about-us {
   position: relative;
+  height: 90vh;
   min-height: 520px;
   background: url("./images/FonWe.png") center / cover no-repeat;
   overflow: hidden;
-  padding-top: 120px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .we-title {
+  position: absolute;
+  top: 120px;
+  width: 100%;
   font-size: 25px;
   color: #fff;
-  text-align: center;
-  margin-bottom: 30px;
+  z-index: 2;
 }
 
 .we-center {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 420px;
-  width: 100%;
 }
 
-/* Галерея */
 .we-gallery-viewport {
-  width: 100%;
-  overflow: hidden; /* скрываем полосы */
-  position: relative;
+  width: 100vw;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.we-gallery-viewport::-webkit-scrollbar {
+  display: none;
 }
 
 .we-gallery {
   display: flex;
   gap: 16px;
-  margin: 0;
-  padding: 0;
+  padding: 0 20px;
+  width: max-content;
 }
 
 .we-gallery img {
@@ -188,8 +178,6 @@ h2, h3 {
   height: 360px;
   object-fit: cover;
   border-radius: 18px;
-  flex-shrink: 0;
-  user-select: none;
 }
 
 .we-text {
@@ -197,9 +185,7 @@ h2, h3 {
   color: #fff;
   font-size: 17px;
   line-height: 1.5;
-  width: calc(100% - 40px);
-  max-width: 420px;
-  text-align: center;
+  max-width: 90%;
 }
 
 /* ===== TIMING ===== */
@@ -235,7 +221,6 @@ h2, h3 {
 .location .content {
   position: relative;
   top: 370px;
-  z-index: 2;
 }
 
 /* ===== DETAILS ===== */
@@ -262,7 +247,7 @@ h2, h3 {
 
 .c1 { background: #cbd6d2; }
 .c2 { background: #e0afb3; }
-.c3 { background: #f9dedb; }
+.c3 { background: #e0afb3; }
 .c4 { background: #d6e4e7; }
 .c5 { background: #d6cdbf; }
 
@@ -289,41 +274,37 @@ footer {
       С большой радостью приглашаем вас разделить с нами главное событие этой весны —
       день нашей свадьбы.
     </p>
-
     <h3>18.04.26</h3>
 
-    <div class="rsvp-wrapper">
+    <div class="rsvp">
       <button class="rsvp-btn" id="rsvpBtn">Подтвердить присутствие</button>
-
-      <div class="rsvp-popover" id="rsvpPopover">
-        <a class="rsvp-link" href="https://wa.me/79871013865" target="_blank">WhatsApp</a>
-        <a class="rsvp-link" href="https://t.me/tomasorato" target="_blank">Telegram</a>
+      <div class="rsvp-menu" id="rsvpMenu">
+        <a href="https://wa.me/79871013865" target="_blank">WhatsApp</a>
+        <a href="https://t.me/USERNAME" target="_blank">Telegram</a>
       </div>
     </div>
+
   </div>
 </section>
 
 <section class="about-us">
-  <h2 class="we-title">
-    НАШИ СЧАСТЛИВЫЕ<br>
-    <span>МОМЕНТЫ</span>
-  </h2>
+  <h2 class="we-title">НАШИ СЧАСТЛИВЫЕ<br><span>МОМЕНТЫ</span></h2>
 
   <div class="we-center">
-    <div class="we-gallery-viewport" id="weViewport">
+    <div class="we-gallery-viewport">
       <div class="we-gallery" id="weGallery">
-        <img src="./images/We1.jpg" loading="lazy">
-        <img src="./images/We2.jpg" loading="lazy">
-        <img src="./images/We3.jpg" loading="lazy">
-        <img src="./images/We4.jpg" loading="lazy">
-        <img src="./images/We5.jpg" loading="lazy">
-        <img src="./images/We6.jpg" loading="lazy">
-        <img src="./images/We7.jpg" loading="lazy">
-        <img src="./images/We8.jpg" loading="lazy">
-        <img src="./images/We9.jpg" loading="lazy">
-        <img src="./images/We10.jpg" loading="lazy">
-        <img src="./images/We11.jpg" loading="lazy">
-        <img src="./images/We12.jpg" loading="lazy">
+        <img src="./images/We1.jpg">
+        <img src="./images/We2.jpg">
+        <img src="./images/We3.jpg">
+        <img src="./images/We4.jpg">
+        <img src="./images/We5.jpg">
+        <img src="./images/We6.jpg">
+        <img src="./images/We7.jpg">
+        <img src="./images/We8.jpg">
+        <img src="./images/We9.jpg">
+        <img src="./images/We10.jpg">
+        <img src="./images/We11.jpg">
+        <img src="./images/We12.jpg">
       </div>
     </div>
 
@@ -334,71 +315,17 @@ footer {
   </div>
 </section>
 
-<section>
-  <div class="content">
-    <h2>ТАЙМИНГ</h2>
-    <div class="time-row"><span>16:30</span><span>Сбор гостей / фуршет</span></div>
-    <div class="time-row"><span>17:00</span><span>Торжественная церемония</span></div>
-    <div class="time-row"><span>17:30</span><span>Праздничный банкет</span></div>
-    <div class="time-row"><span>23:00</span><span>Завершение банкета</span></div>
-  </div>
-</section>
-
-<section class="location">
-  <div class="content">
-    <h2>ЛОКАЦИЯ</h2>
-    <p><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
-  </div>
-</section>
-
-<section class="details">
-  <div class="content">
-    <h2>ДЕТАЛИ</h2>
-
-    <h3>ДРЕСС-КОД</h3>
-    <p>
-      Для нас самое главное – ваше присутствие.<br>
-      Но будем очень благодарны, если поддержите цветовую гамму свадьбы.
-    </p>
-
-    <div class="colors">
-      <span class="c1"></span>
-      <span class="c2"></span>
-      <span class="c3"></span>
-      <span class="c4"></span>
-      <span class="c5"></span>
-    </div>
-
-    <div class="divider"></div>
-
-    <h3>18+</h3>
-    <p>
-      Просим оставить ваших малышей в надёжных руках на день торжества,
-      так как формат нашей свадьбы не предполагает детской зоны и аниматоров.
-    </p>
-
-    <div class="divider"></div>
-
-    <h3>КОНТАКТЫ</h3>
-    <p>
-      По всем вопросам обращайтесь:<br>
-      +7 987 101-38-65 — Вадим<br>
-      +7 964 955-52-60 — Алсу ♥️
-    </p>
-  </div>
-</section>
-
 <footer>
   С любовью, Вадим & Алсу
 </footer>
 
 <script>
-/* Бесконечная галерея */
-const viewport = document.getElementById('weViewport');
+const viewport = document.querySelector('.we-gallery-viewport');
 const gallery = document.getElementById('weGallery');
 
-// дублируем изображения
-[...gallery.children].forEach(img => gallery.appendChild(img.cloneNode(true)));
+[...gallery.children].forEach(img => {
+  gallery.appendChild(img.cloneNode(true));
+});
 
 let speed = 0.25;
 let paused = false;
@@ -413,20 +340,22 @@ function loop() {
   requestAnimationFrame(loop);
 }
 
-viewport.addEventListener('mouseenter', () => paused = true);
-viewport.addEventListener('mouseleave', () => paused = false);
 viewport.addEventListener('touchstart', () => paused = true);
 viewport.addEventListener('touchend', () => paused = false);
 
 loop();
 
-/* RSVP popover */
-const btn = document.getElementById('rsvpBtn');
-const popover = document.getElementById('rsvpPopover');
+const rsvpBtn = document.getElementById('rsvpBtn');
+const rsvpMenu = document.getElementById('rsvpMenu');
 
-btn.addEventListener('click', () => popover.classList.toggle('active'));
-document.addEventListener('click', e => {
-  if (!e.target.closest('.rsvp-wrapper')) popover.classList.remove('active');
+rsvpBtn.addEventListener('click', () => {
+  rsvpMenu.classList.toggle('active');
+});
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.rsvp')) {
+    rsvpMenu.classList.remove('active');
+  }
 });
 </script>
 
