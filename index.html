@@ -295,6 +295,14 @@ h2, h3 {
 .countdown-section {
   margin-top: 40px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.countdown-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .countdown-section h3 {
@@ -344,8 +352,8 @@ footer {
     <div class="rsvp">
       <button class="rsvp-btn" id="rsvpBtn">Подтвердить присутствие</button>
       <div class="rsvp-menu" id="rsvpMenu">
-        <a href="https://wa.me/79871013865" target="_blank">WhatsApp</a>
-        <a href="https://t.me/USERNAME" target="_blank">Telegram</a>
+        <a href="https://wa.me/79871013865?text=Здравствуйте!%20Подтверждаю%20присутствие%20на%20свадьбе" target="_blank">WhatsApp</a>
+        <a href="https://t.me/USERNAME?text=Здравствуйте!%20Подтверждаю%20присутствие%20на%20свадьбе" target="_blank">Telegram</a>
       </div>
     </div>
   </div>
@@ -513,6 +521,19 @@ function updateCountdown() {
 }
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+// ===== Анимация появления таймера =====
+const countdownSection = document.querySelector('.countdown-section');
+function revealCountdown() {
+  const top = countdownSection.getBoundingClientRect().top;
+  const windowHeight = window.innerHeight;
+  if(top < windowHeight - 100) {
+    countdownSection.classList.add('visible');
+    window.removeEventListener('scroll', revealCountdown);
+  }
+}
+window.addEventListener('scroll', revealCountdown);
+revealCountdown();
 </script>
 
 </body>
