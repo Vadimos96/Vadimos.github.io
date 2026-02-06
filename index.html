@@ -208,21 +208,7 @@ h2, h3 {
 /* ===== LOCATION ===== */
 .location {
   position: relative;
-  background: url("./images/FonLocation.png") center/cover no-repeat;
-  color: #fff;
-}
-
-.location::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.35) 45%,
-    rgba(0,0,0,0.35) 55%,
-    rgba(0,0,0,0) 100%
-  );
+  color: #2b2b2b;
 }
 
 .location .content {
@@ -230,18 +216,12 @@ h2, h3 {
   z-index: 2;
 }
 
-/* Встроенная карта */
-.location .map-container {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  border-radius: 18px;
-  overflow: hidden;
-  margin-top: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.location p {
+  font-size: 18px; /* крупнее адрес */
+  line-height: 1.5;
 }
 
+/* Кнопка маршрута */
 .map-btn {
   display: inline-block;
   margin-top: 10px;
@@ -369,19 +349,16 @@ footer {
 <section class="location">
   <div class="content">
     <h2>ЛОКАЦИЯ</h2>
-    <p><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
+    <p>
+      <strong>Комплекс «Тан»</strong><br>
+      г. Уфа, ул. Рихарда Зорге, 65
+    </p>
 
-    <div class="map-container">
-      <iframe
-        src="https://yandex.ru/map-widget/v1/?um=constructor%3A7b8a2e2a2b5f06dba3fddc7dc1d2b4f17fa6f2c73e92fda9c5a0e01912b5d5c4&amp;source=constructor"
-        width="100%"
-        height="100%"
-        frameborder="0"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <a class="map-btn" href="https://yandex.ru/maps/?rtext=~Уфа,+Рихарда+Зорге+65" target="_blank">Построить маршрут</a>
+    <a class="map-btn" 
+       href="https://yandex.ru/maps/?rtext=~Уфа,+Рихарда+Зорге+65&rtt=auto" 
+       target="_blank">
+       Построить маршрут
+    </a>
   </div>
 </section>
 
