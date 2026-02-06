@@ -171,20 +171,15 @@ h2, h3 {
 }
 
 .we-gallery-viewport {
-  width: 100vw;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.we-gallery-viewport::-webkit-scrollbar {
-  display: none;
+  width: 100%;
+  overflow: hidden; /* скрываем лишние полосы */
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .we-gallery {
   display: flex;
   gap: 16px;
-  padding: 0 20px;
-  width: max-content;
 }
 
 .we-gallery img {
@@ -192,6 +187,7 @@ h2, h3 {
   height: 360px;
   object-fit: cover;
   border-radius: 18px;
+  flex-shrink: 0;
 }
 
 .we-text {
@@ -393,31 +389,18 @@ footer {
 </footer>
 
 <script>
-const viewport = document.querySelector('.we-gallery-viewport');
+/* Галерея бесконечного скролла */
 const gallery = document.getElementById('weGallery');
+let position = 0;
 
-// Дублируем галерею для бесконечного скролла
-[...gallery.children].forEach(img => {
-  gallery.appendChild(img.cloneNode(true));
-});
-
-let speed = 0.25;
-let paused = false;
-
-function loop() {
-  if (!paused) {
-    viewport.scrollLeft += speed;
-    if (viewport.scrollLeft >= gallery.scrollWidth / 2) {
-      viewport.scrollLeft = 0;
-    }
-  }
-  requestAnimationFrame(loop);
+function animateGallery() {
+  position -= 0.25;
+  if (position <= -gallery.scrollWidth / 2) position = 0;
+  gallery.style.transform = `translateX(${position}px)`;
+  requestAnimationFrame(animateGallery);
 }
 
-viewport.addEventListener('touchstart', () => paused = true);
-viewport.addEventListener('touchend', () => paused = false);
-
-loop();
+animateGallery();
 
 /* RSVP popover */
 const btn = document.getElementById('rsvpBtn');
