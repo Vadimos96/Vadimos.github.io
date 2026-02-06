@@ -67,22 +67,6 @@ h2, h3 {
   z-index: 2;
 }
 
-/* ===== COUNTDOWN ===== */
-.countdown {
-  position: absolute;
-  top: 450px; /* под именами */
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
-  color: #fff;
-  z-index: 2;
-  letter-spacing: 1px;
-}
-.countdown span {
-  font-weight: 600;
-}
-
 /* ===== INVITE ===== */
 .invite p {
   line-height: 1.6;
@@ -307,6 +291,31 @@ h2, h3 {
 .c4 { background: #d6e4e7; }
 .c5 { background: #d6cdbf; }
 
+/* ===== Countdown в details ===== */
+.countdown-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.countdown-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #2b2b2b;
+}
+
+.countdown {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #2b2b2b;
+}
+
+.countdown span {
+  font-weight: 600;
+  margin: 0 5px;
+}
+
 footer {
   padding: 30px 0;
   font-size: 12px;
@@ -319,13 +328,6 @@ footer {
 
 <section class="hero">
   <div class="names">ВАДИМ<br>&amp;<br>АЛСУ</div>
-
-  <div class="countdown" id="countdown">
-    <span id="days">00</span> д 
-    <span id="hours">00</span> ч 
-    <span id="minutes">00</span> м 
-    <span id="seconds">00</span> с
-  </div>
 </section>
 
 <section class="invite">
@@ -438,6 +440,18 @@ footer {
       +7 987 101-38-65 — Вадим<br>
       +7 964 955-52-60 — Алсу ♥️
     </p>
+
+    <!-- ===== Countdown ===== -->
+    <div class="countdown-section">
+      <h3>До события осталось</h3>
+      <div class="countdown" id="countdown">
+        <span id="days">00</span> д 
+        <span id="hours">00</span> ч 
+        <span id="minutes">00</span> м 
+        <span id="seconds">00</span> с
+      </div>
+    </div>
+
   </div>
 </section>
 
