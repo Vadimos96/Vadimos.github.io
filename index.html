@@ -67,6 +67,22 @@ h2, h3 {
   z-index: 2;
 }
 
+/* ===== COUNTDOWN ===== */
+.countdown {
+  position: absolute;
+  top: 450px; /* под именами */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  color: #fff;
+  z-index: 2;
+  letter-spacing: 1px;
+}
+.countdown span {
+  font-weight: 600;
+}
+
 /* ===== INVITE ===== */
 .invite p {
   line-height: 1.6;
@@ -303,6 +319,13 @@ footer {
 
 <section class="hero">
   <div class="names">ВАДИМ<br>&amp;<br>АЛСУ</div>
+
+  <div class="countdown" id="countdown">
+    <span id="days">00</span> д 
+    <span id="hours">00</span> ч 
+    <span id="minutes">00</span> м 
+    <span id="seconds">00</span> с
+  </div>
 </section>
 
 <section class="invite">
@@ -423,16 +446,14 @@ footer {
 </footer>
 
 <script>
+// ===== Галерея "Мы" =====
 const viewport = document.querySelector('.we-gallery-viewport');
 const gallery = document.getElementById('weGallery');
-
 [...gallery.children].forEach(img => {
   gallery.appendChild(img.cloneNode(true));
 });
-
 let speed = 0.25;
 let paused = false;
-
 function loop() {
   if (!paused) {
     viewport.scrollLeft += speed;
@@ -442,24 +463,42 @@ function loop() {
   }
   requestAnimationFrame(loop);
 }
-
 viewport.addEventListener('touchstart', () => paused = true);
 viewport.addEventListener('touchend', () => paused = false);
-
 loop();
 
+// ===== RSVP =====
 const rsvpBtn = document.getElementById('rsvpBtn');
 const rsvpMenu = document.getElementById('rsvpMenu');
-
 rsvpBtn.addEventListener('click', () => {
   rsvpMenu.classList.toggle('active');
 });
-
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.rsvp')) {
     rsvpMenu.classList.remove('active');
   }
 });
+
+// ===== Таймер обратного отсчёта =====
+const weddingDate = new Date("April 18, 2026 00:00:00").getTime();
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+  if (distance < 0) {
+    document.getElementById("countdown").innerHTML = "СВАДЬБА!";
+    return;
+  }
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((distance % (1000*60)) / 1000);
+  document.getElementById("days").innerText = String(days).padStart(2,'0');
+  document.getElementById("hours").innerText = String(hours).padStart(2,'0');
+  document.getElementById("minutes").innerText = String(minutes).padStart(2,'0');
+  document.getElementById("seconds").innerText = String(seconds).padStart(2,'0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
 </script>
 
 </body>
