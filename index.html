@@ -73,7 +73,7 @@ h2, h3 {
 }
 
 .invite h3 {
-  font-size: 36px; /* увеличена дата */
+  font-size: 36px;
   margin-top: 25px;
 }
 
@@ -210,8 +210,26 @@ h2, h3 {
   position: relative;
   background: url("./images/FonLocation.png") center/cover no-repeat;
   color: #fff;
-  padding: 80px 20px; /* увеличен padding сверху/снизу */
-  min-height: 650px;  /* увеличена высота */
+  min-height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.location::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.55) 50%,
+    rgba(0,0,0,0) 100%
+  );
+  z-index: 1;
 }
 
 .location .content {
@@ -220,12 +238,11 @@ h2, h3 {
 }
 
 .location p {
-  font-size: 18px; /* крупнее адрес */
+  font-size: 18px;
   line-height: 1.5;
   color: #fff;
 }
 
-/* Кнопка маршрута */
 .map-btn {
   display: inline-block;
   margin-top: 20px;
@@ -359,7 +376,7 @@ footer {
     </p>
 
     <a class="map-btn" 
-       href="https://yandex.ru/maps/?rtext=~54.7380,55.9673&rtt=auto" 
+       href="https://yandex.ru/maps/?rtext=~54.770474,56.010865&rtt=auto" 
        target="_blank">
        Построить маршрут
     </a>
