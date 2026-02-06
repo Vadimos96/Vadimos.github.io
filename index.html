@@ -72,6 +72,11 @@ h2, h3 {
   line-height: 1.6;
 }
 
+.invite h3 {
+  font-size: 36px; /* увеличенный шрифт даты */
+  margin-top: 20px;
+}
+
 /* ===== RSVP ===== */
 .rsvp-wrapper {
   position: relative;
@@ -257,7 +262,7 @@ h2, h3 {
 
 .c1 { background: #cbd6d2; }
 .c2 { background: #e0afb3; }
-.c3 { background: #e0afb3; }
+.c3 { background: #f9dedb; } /* заменили дублирующийся цвет */
 .c4 { background: #d6e4e7; }
 .c5 { background: #d6cdbf; }
 
@@ -298,14 +303,123 @@ footer {
   </div>
 </section>
 
-<!-- Дальше сайт полностью сохранён -->
-<!-- ABOUT US, TIMING, LOCATION, DETAILS, FOOTER — без изменений -->
+<section class="about-us">
+  <h2 class="we-title">
+    НАШИ СЧАСТЛИВЫЕ<br>
+    <span>МОМЕНТЫ</span>
+  </h2>
+
+  <div class="we-center">
+    <div class="we-gallery-viewport">
+      <div class="we-gallery" id="weGallery">
+        <img src="./images/We1.jpg" loading="lazy">
+        <img src="./images/We2.jpg" loading="lazy">
+        <img src="./images/We3.jpg" loading="lazy">
+        <img src="./images/We4.jpg" loading="lazy">
+        <img src="./images/We5.jpg" loading="lazy">
+        <img src="./images/We6.jpg" loading="lazy">
+        <img src="./images/We7.jpg" loading="lazy">
+        <img src="./images/We8.jpg" loading="lazy">
+        <img src="./images/We9.jpg" loading="lazy">
+        <img src="./images/We10.jpg" loading="lazy">
+        <img src="./images/We11.jpg" loading="lazy">
+        <img src="./images/We12.jpg" loading="lazy">
+      </div>
+    </div>
+
+    <p class="we-text">
+      Не ищите любви, ищите того, кто принесёт вам счастье.<br>
+      Рано или поздно это счастье превратится в любовь.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="content">
+    <h2>ТАЙМИНГ</h2>
+    <div class="time-row"><span>16:30</span><span>Сбор гостей / фуршет</span></div>
+    <div class="time-row"><span>17:00</span><span>Торжественная церемония</span></div>
+    <div class="time-row"><span>17:30</span><span>Праздничный банкет</span></div>
+    <div class="time-row"><span>23:00</span><span>Завершение банкета</span></div>
+  </div>
+</section>
+
+<section class="location">
+  <div class="content">
+    <h2>ЛОКАЦИЯ</h2>
+    <p><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
+  </div>
+</section>
+
+<section class="details">
+  <div class="content">
+    <h2>ДЕТАЛИ</h2>
+
+    <h3>ДРЕСС-КОД</h3>
+    <p>
+      Для нас самое главное – ваше присутствие.<br>
+      Но будем очень благодарны, если поддержите цветовую гамму свадьбы.
+    </p>
+
+    <div class="colors">
+      <span class="c1"></span>
+      <span class="c2"></span>
+      <span class="c3"></span>
+      <span class="c4"></span>
+      <span class="c5"></span>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>18+</h3>
+    <p>
+      Просим оставить ваших малышей в надёжных руках на день торжества,
+      так как формат нашей свадьбы не предполагает детской зоны и аниматоров.
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>КОНТАКТЫ</h3>
+    <p>
+      По всем вопросам обращайтесь:<br>
+      +7 987 101-38-65 — Вадим<br>
+      +7 964 955-52-60 — Алсу ♥️
+    </p>
+  </div>
+</section>
 
 <footer>
   С любовью, Вадим & Алсу
 </footer>
 
 <script>
+const viewport = document.querySelector('.we-gallery-viewport');
+const gallery = document.getElementById('weGallery');
+
+// Дублируем галерею для бесконечного скролла
+[...gallery.children].forEach(img => {
+  gallery.appendChild(img.cloneNode(true));
+});
+
+let speed = 0.25;
+let paused = false;
+
+function loop() {
+  if (!paused) {
+    viewport.scrollLeft += speed;
+    if (viewport.scrollLeft >= gallery.scrollWidth / 2) {
+      viewport.scrollLeft = 0;
+    }
+  }
+  requestAnimationFrame(loop);
+}
+
+viewport.addEventListener('touchstart', () => paused = true);
+viewport.addEventListener('touchend', () => paused = false);
+
+loop();
+
+/* RSVP popover */
 const btn = document.getElementById('rsvpBtn');
 const popover = document.getElementById('rsvpPopover');
 
