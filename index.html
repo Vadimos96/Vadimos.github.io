@@ -148,7 +148,7 @@ h2, h3 {
   min-height: 520px;
   background: url("./images/FonWe.png") center / cover no-repeat;
   overflow: hidden;
-  padding-top: 120px; /* место для заголовка */
+  padding-top: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -165,27 +165,22 @@ h2, h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 420px; /* чтобы галерея и текст не сжимались */
+  min-height: 420px;
   width: 100%;
 }
 
+/* Галерея */
 .we-gallery-viewport {
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-.we-gallery-viewport::-webkit-scrollbar {
-  display: none;
+  overflow: hidden; /* скрываем полосы */
+  position: relative;
 }
 
 .we-gallery {
   display: flex;
   gap: 16px;
-  padding: 0 20px;
-  width: max-content;
+  margin: 0;
+  padding: 0;
 }
 
 .we-gallery img {
@@ -398,7 +393,7 @@ footer {
 </footer>
 
 <script>
-/* Бесконечная галерея через scrollLeft */
+/* Бесконечная галерея */
 const viewport = document.getElementById('weViewport');
 const gallery = document.getElementById('weGallery');
 
