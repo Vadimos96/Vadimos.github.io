@@ -73,7 +73,7 @@ h2, h3 {
 }
 
 .invite h3 {
-  font-size: 36px; /* увеличенный шрифт даты */
+  font-size: 36px;
   margin-top: 20px;
 }
 
@@ -170,9 +170,10 @@ h2, h3 {
   align-items: center;
 }
 
+/* Новый стиль галереи */
 .we-gallery-viewport {
   width: 100%;
-  overflow: hidden; /* скрываем лишние полосы */
+  overflow: hidden; /* убираем лишние полосы */
   padding: 0 20px;
   box-sizing: border-box;
 }
@@ -180,6 +181,7 @@ h2, h3 {
 .we-gallery {
   display: flex;
   gap: 16px;
+  flex-wrap: nowrap;
 }
 
 .we-gallery img {
@@ -196,6 +198,7 @@ h2, h3 {
   font-size: 17px;
   line-height: 1.5;
   max-width: 90%;
+  text-align: center;
 }
 
 /* ===== TIMING ===== */
@@ -258,7 +261,7 @@ h2, h3 {
 
 .c1 { background: #cbd6d2; }
 .c2 { background: #e0afb3; }
-.c3 { background: #f9dedb; } /* заменили дублирующийся цвет */
+.c3 { background: #f9dedb; }
 .c4 { background: #d6e4e7; }
 .c5 { background: #d6cdbf; }
 
@@ -389,14 +392,21 @@ footer {
 </footer>
 
 <script>
-/* Галерея бесконечного скролла */
+/* Бесконечная анимация галереи */
 const gallery = document.getElementById('weGallery');
-let position = 0;
+const galleryImages = Array.from(gallery.children);
+let offset = 0;
+
+// Дублируем картинки визуально для плавного бесконечного скролла
+galleryImages.forEach(img => {
+  const clone = img.cloneNode(true);
+  gallery.appendChild(clone);
+});
 
 function animateGallery() {
-  position -= 0.25;
-  if (position <= -gallery.scrollWidth / 2) position = 0;
-  gallery.style.transform = `translateX(${position}px)`;
+  offset -= 0.25;
+  if (Math.abs(offset) >= gallery.scrollWidth / 2) offset = 0;
+  gallery.style.transform = `translateX(${offset}px)`;
   requestAnimationFrame(animateGallery);
 }
 
