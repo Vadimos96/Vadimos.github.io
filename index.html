@@ -76,7 +76,6 @@ h2, h3 {
 /* ===== RSVP ===== */
 .rsvp-wrapper {
   margin-top: 25px;
-  position: relative;
 }
 
 .rsvp-main-btn {
@@ -92,23 +91,15 @@ h2, h3 {
 }
 
 .rsvp-dropdown {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) translateY(-10px);
-  margin-top: 12px;
+  position: fixed;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: 0.3s;
-}
-
-.rsvp-wrapper.active .rsvp-dropdown {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transition: 0.25s ease;
+  z-index: 9999;
 }
 
 .rsvp-dropdown a {
@@ -118,13 +109,21 @@ h2, h3 {
   text-decoration: none;
 }
 
+.rsvp-dropdown a:hover {
+  background: #f3e7dc;
+}
+
+.rsvp-dropdown.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* ===== МЫ ===== */
 .about-us {
   position: relative;
   height: 90vh;
   min-height: 520px;
   background: url("./images/FonWe.png") center / cover no-repeat;
-  overflow: hidden;
 }
 
 .we-title {
@@ -241,20 +240,22 @@ footer {
     <div class="invite-date">18.04.26</div>
 
     <div class="rsvp-wrapper">
-      <button class="rsvp-main-btn" id="rsvpToggle">ПОДТВЕРДИТЬ ПРИСУТСТВИЕ</button>
-
-      <div class="rsvp-dropdown">
-        <a href="https://wa.me/79871013865?text=Здравствуйте!%20Подтверждаю%20присутствие%20на%20вашей%20свадьбе%20💍" target="_blank">
-          WhatsApp
-        </a>
-
-        <a href="tg://msg?text=Здравствуйте!%20Подтверждаю%20присутствие%20на%20вашей%20свадьбе%20💍">
-          Telegram
-        </a>
-      </div>
+      <button class="rsvp-main-btn" id="rsvpBtn">
+        ПОДТВЕРДИТЬ ПРИСУТСТВИЕ
+      </button>
     </div>
   </div>
 </section>
+
+<!-- DROPDOWN ВНЕ СЕКЦИЙ -->
+<div class="rsvp-dropdown" id="rsvpDropdown">
+  <a href="https://wa.me/79871013865?text=Здравствуйте!%20Подтверждаю%20присутствие%20на%20вашей%20свадьбе%20💍" target="_blank">
+    WhatsApp
+  </a>
+  <a href="tg://msg?text=Здравствуйте!%20Подтверждаю%20присутствие%20на%20вашей%20свадьбе%20💍">
+    Telegram
+  </a>
+</div>
 
 <section class="about-us">
   <h2 class="we-title">НАШИ СЧАСТЛИВЫЕ<br>МОМЕНТЫ</h2>
@@ -283,16 +284,51 @@ footer {
   </div>
 </section>
 
+<section>
+  <div class="content">
+    <h2>ТАЙМИНГ</h2>
+    <div class="time-row"><span>16:30</span><span>Сбор гостей</span></div>
+    <div class="time-row"><span>17:00</span><span>Церемония</span></div>
+    <div class="time-row"><span>17:30</span><span>Ужин</span></div>
+    <div class="time-row"><span>23:00</span><span>Завершение</span></div>
+  </div>
+</section>
+
+<section class="location">
+  <div class="content">
+    <h2>ЛОКАЦИЯ</h2>
+    <p><strong>Комплекс «Тан»</strong><br>г. Уфа</p>
+  </div>
+</section>
+
+<section class="details">
+  <div class="content">
+    <h2>ДЕТАЛИ</h2>
+    <div class="colors">
+      <span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span>
+    </div>
+  </div>
+</section>
+
 <footer>С любовью, Вадим & Алсу</footer>
 
 <script>
-/* RSVP */
-const toggle = document.getElementById('rsvpToggle');
-const wrapper = document.querySelector('.rsvp-wrapper');
+/* RSVP dropdown positioning */
+const btn = document.getElementById('rsvpBtn');
+const dropdown = document.getElementById('rsvpDropdown');
 
-toggle.onclick = () => wrapper.classList.toggle('active');
+btn.addEventListener('click', () => {
+  const rect = btn.getBoundingClientRect();
+  dropdown.style.top = rect.bottom + 10 + 'px';
+  dropdown.style.left = rect.left + rect.width / 2 + 'px';
+  dropdown.style.transform = 'translateX(-50%)';
+  dropdown.classList.toggle('active');
+});
+
 document.addEventListener('click', e => {
-  if (!wrapper.contains(e.target)) wrapper.classList.remove('active');
+  if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+    dropdown.classList.remove('active');
+  }
 });
 
 /* GALLERY AUTO SCROLL */
@@ -304,20 +340,20 @@ const gallery = document.getElementById('weGallery');
 let speed = 0.3;
 let paused = false;
 
-function scrollLoop() {
+function loop() {
   if (!paused) {
     viewport.scrollLeft += speed;
     if (viewport.scrollLeft >= gallery.scrollWidth / 2) {
       viewport.scrollLeft = 0;
     }
   }
-  requestAnimationFrame(scrollLoop);
+  requestAnimationFrame(loop);
 }
 
 viewport.addEventListener('touchstart', () => paused = true);
 viewport.addEventListener('touchend', () => paused = false);
 
-scrollLoop();
+loop();
 </script>
 
 </body>
